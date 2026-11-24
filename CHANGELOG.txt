@@ -1,0 +1,116 @@
+PurrKatty — Cat Breeder & Pet HTML Template
+============================================
+
+Version 2.3 — November 2026
+
+- Shop filter: the Cat Carrier Bag is under Accessories, with the
+  bowls (it showed under Grooming).
+
+Version 2.2 — November 2026
+
+- Shop: every product has its own photo (eight products shared four,
+  and the cat food was a plate of fruit), and the names follow the
+  photos: Cat Carrier Bag, Kitten Play Ball, Grooming Comb, Water
+  Bowl. Credits in IMAGE-CREDITS.txt.
+- The home page's shop strip shows the same prices as the shop.
+- The three packages each list what they include (grooms, baths,
+  boarding, collection) instead of the same five lines.
+- Social icons: Instagram has its own icon (it was a wifi symbol) and
+  the old Google+ link is now Pinterest. Grammar fixes in the About
+  section; the sample email address is info@example.com.
+
+Version 2.1 — November 2026
+
+- Real copy in place of the placeholder Latin: the welcome and About
+  text, the four grooming services, the three testimonials, and the
+  blog post on keeping a cat's coat glossy with its author note and
+  three reader comments (now dated 2026).
+- The six blog cards (three on the home page) each have their own
+  title and alt text instead of all repeating the first post, and
+  every post date and the footer year are 2026.
+
+Version 2.0 — 2026
+------------------
+
+A rebuild on a modern stack — the same design, checked block by block
+against version 1 at desktop, tablet and phone widths — plus the pages the
+site always pointed at but never had, a booking-confirmation email in the
+same design, and the things that were broken in version 1 quietly fixed.
+
+
+NEW
+- services.html — the six services (full grooming, bath & dry, styling,
+  medical bath, V.I.P. service, boarding) with what each includes, the
+  price and the time, and a Book This button on each.
+- booking.html — the page behind "Request a Call" and the three packages'
+  buttons: name, phone, email, the cat, a package or service (preselected
+  from the button you came from), a date, the best time to call and notes,
+  with how-it-works and the phone number beside it.
+- shop.html and product.html — the shop behind the home page's four
+  products: eight items with a category filter, and a product page with
+  details, quantity and an order button, plus related items.
+- 404.html — a not-found page with three ways back in.
+- email-booking.html — the confirmation a customer receives after booking:
+  the details in a box, add-to-calendar and change buttons, before-you-come
+  notes, address and hours. Table-based, inline-styled, 600px wide, with an
+  Outlook conditional and a phone layout — the way mail clients need it.
+  Before sending, replace the images/... paths with absolute URLs on your
+  server and put your links in place of the "#" ones (the file says so at
+  the top).
+
+FIXED (things that were broken in version 1)
+- 113 "#" links now go somewhere: Read More to the about page, Request a
+  Call and the packages' Contact Us to the booking page, the shop items to
+  the product page, the gallery "link" icons to the gallery (and, on the
+  gallery page, to the full-size photo), the post's tags and categories to
+  the blog, the four social icons in every banner and the footer to the
+  networks.
+- The "Send Message" and "Post Comment" buttons were plain links that did
+  nothing; they submit the form now, and the form checks its fields first.
+- The Instagram strip on the home page ran against Instagram's old API
+  (shut down in 2018) — with an access token shipped in the code — and
+  showed nothing. It is a static "follow us" strip of nine photos linking
+  to Instagram now, and the token is gone.
+- The comment form asked for the website in an email field with a
+  duplicate id; the search box had no label.
+- The site name was an <h1> on every page (twice on the home page) and again
+  in the footer. Each page has one h1 now — its block title, the post's title
+  on the post, the first slide's tagline on the home page — with the same
+  look.
+- On a phone: the testimonial box cut off the quote (a fixed 300px box; it
+  grows with the text now), the home banner was a thin 208px strip (it is a
+  400px band with the photo filling it), and the shop went two-up between
+  400 and 767px (one product per row now).
+
+DESIGN
+- Unchanged. The fonts are version 1's own Font Squirrel kit (Questrial and
+  Baloo Thambi), self-hosted as before, woff2 only.
+
+UNDER THE HOOD
+- Bootstrap 3.3.6 + jQuery 3.2 + lightbox.js + instafeed → Bootstrap 5.3,
+  no jQuery. js/main.js is one dependency-free file: the gallery lightbox,
+  the menu closing after a tap, form validation, back-to-top, the shop
+  filter. The vertical banner slider and the testimonial slider are
+  Bootstrap's own carousel.
+- Font Awesome 4 → 6 (woff2 subset).
+- css/bs3-compat.css: the Bootstrap 3 behaviours this design relies on
+  (the 1170 container, the media object, the carousel controls and caption,
+  the input group) restored on top of Bootstrap 5. Safe to trim.
+- Every page: a unique <title> and meta description, lang="en", one h1,
+  no inline styles, no inline scripts, every image with alt text and
+  width/height (no layout shift), lazy loading below the fold, labelled
+  form fields, https links.
+- home.html redirects to index.html (the entry page is index.html now).
+
+FILES
+  index.html (home.html redirects to it) · about.html · gallery.html ·
+  blog.html · single-blog.html · contact.html · services.html ·
+  booking.html · shop.html · product.html · 404.html · email-booking.html ·
+  css/ · js/ · fonts/ · webfonts/ · images/ · License.txt · CHANGELOG.txt
+
+Version 1.0
+-----------
+Initial release: six pages, Bootstrap 3, jQuery.
+
+License: see License.txt. Please keep the ThemeVault link in the footer of
+the free version; the credit-removal option is available on the site.

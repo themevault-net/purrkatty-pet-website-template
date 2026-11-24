@@ -1,0 +1,4870 @@
+/*
+Template Name: PurrKatty
+File Name: style.css
+Author Name: ThemeVault
+Author URI: https://www.themevault.net/
+License URI: https://www.themevault.net/license/
+Version: 2.0
+*/
+
+/* ==========================================================================
+   1. Design tokens — taken from the ORIGINAL's own palette, not invented
+   ========================================================================== */
+:root {
+    --tv-orange: #d94c28;
+    --tv-amber: #d89327;
+    --tv-green: #8ba72e;
+    --tv-plum: #ba2257;
+    --tv-violet: #5a4ca6;
+    --tv-accent: var(--tv-orange);
+    --tv-ink: #111;
+    --tv-grey: #363636;
+    --tv-white: #fff;
+    --tv-font-body: "Questrial", sans-serif;
+    --tv-font-head: "Baloo Thambi", sans-serif;
+}
+
+/* ==========================================================================
+   2. Fonts — self-hosted, as v1 did: the same Font Squirrel kit (Questrial
+   and Baloo Thambi, one cut each), woff2 only. Font Squirrel names each cut
+   as its own FAMILY (`questrialregular`, `baloo_thambiregular`); they are
+   declared here under their real names and _port-css.mjs rewrites the
+   rules to match (v1 itself already wrote "Baloo Thambi" in one rule).
+   ========================================================================== */
+@font-face { font-family: "Questrial"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/questrial-regular-webfont.woff2") format("woff2"); }
+@font-face { font-family: "Baloo Thambi"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/baloothambi-regular-webfont.woff2") format("woff2"); }
+
+/* ==========================================================================
+   3. Base
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+    /* overflow-x belongs HERE, never on body: on body it forces overflow-y to
+       compute as auto, which makes body a scroll container. */
+    overflow-x: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}
+/* v1's body took Bootstrap 3's 14px / 1.42857 base; its own rule sets the
+   family, colour and letter-spacing only. Bootstrap 5's root stays 16px. */
+body {
+    font-family: var(--tv-font-body);
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid var(--tv-accent);
+    outline-offset: 2px;
+}
+img { max-width: 100%; height: auto; }
+
+/* ==========================================================================
+   4. Components - ported from v1's style.css, with the Bootstrap 3 selectors
+   rewritten for Bootstrap 5. See _port-css.mjs for the exact mapping.
+
+   ORDER MATTERS, and it is taken from the <link> tags rather than chosen here.
+   Where two of a template's stylesheets set the same property at the same
+   specificity, the later one wins — so reordering them silently changes the
+   design. AquaLand loaded scrolling-nav.css before style.css; appending it
+   after instead turned ".navbar{padding:10px}" into "padding:20px 0" and added
+   20px to the menu bar at every desktop width.
+
+   The responsive stylesheet is simply the last link: v1's queries are
+   max-width based and land on breakpoints Bootstrap 5 shares, so they carry
+   across unchanged.
+   ========================================================================== */
+/*
+Template Name: purrkatty
+File Name: style.css
+Author Name: ThemeVault
+Author URI: http://www.themevault.net/
+License URI: http://www.themevault.net/license/
+*/
+
+html {
+}
+html, body {width:100%; padding:0; margin:0; color:#111;}
+a, button {
+    text-decoration: none;
+    cursor: pointer;
+}
+a {
+    color: inherit;
+}
+a:hover,
+a:active,
+a:focus {
+    color: inherit;
+    outline: none !important;
+    text-decoration: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    list-style-type: none;
+}
+.form-control::-webkit-input-placeholder {
+    opacity: 1;
+}
+.placeholder-fix:focus::-webkit-input-placeholder  {color:transparent !important; }
+.placeholder-fix:focus::-moz-placeholder   {color:transparent !important;}
+.placeholder-fix:-moz-placeholder   {color:transparent !important;}
+textarea:focus,textArea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+    border-color: none;
+    box-shadow: none !important;
+    outline: 0 none;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button:active,
+button:focus {
+    outline: none !important;
+    text-decoration: none;
+}
+/*typography
+----------------------*/
+
+body {
+    color: #000;
+    font-family: "Questrial", sans-serif;
+    background-color: #fff;
+    letter-spacing: 1px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Baloo Thambi", sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0
+}
+
+/*common
+----------------------*/
+
+.tv-bgclr-black{
+    background-color: #111;
+}
+.tv-paddingTop-80{
+    padding-top: 80px;
+}
+.tv-padding0{
+    padding: 0;
+}
+
+/* slider
+----------------------*/
+
+.carousel.vertical .carousel-inner {
+    height: 100%;
+    width: auto;
+}
+.carousel.vertical .carousel-inner > .carousel-item {
+    width: auto;
+    -webkit-transition: 0.6s ease-in-out top;
+    transition: 0.6s ease-in-out top;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel.vertical .carousel-inner > .carousel-item {
+        -webkit-transition: 0.6s ease-in-out;
+        transition: 0.6s ease-in-out;
+    }
+    .carousel.vertical .carousel-inner > .carousel-item-next, .carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-end {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        top: 0;
+    }
+    .carousel.vertical .carousel-inner > .carousel-item-prev, .carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-start {
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+        top: 0;
+    }
+    .carousel.vertical .carousel-inner > .carousel-item-next.carousel-item-start, .carousel.vertical .carousel-inner > .carousel-item-prev.carousel-item-end, .carousel.vertical .carousel-inner > .carousel-item.active {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        top: 0;
+    }
+}
+.carousel.vertical .carousel-inner > .carousel-item.active,
+.carousel.vertical .carousel-inner > .carousel-item-next,
+.carousel.vertical .carousel-inner > .carousel-item-prev {
+    display: block;
+}
+.carousel.vertical .carousel-inner > .carousel-item.active {
+    top: 0;
+}
+.carousel.vertical .carousel-inner > .carousel-item-next,
+.carousel.vertical .carousel-inner > .carousel-item-prev {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item-next {
+    top: 100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item-prev {
+    top: -100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item-next.carousel-item-start,
+.carousel.vertical .carousel-inner > .carousel-item-prev.carousel-item-end {
+    top: 0;
+}
+.carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-start {
+    top: -100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-end {
+    top: 100%;
+}
+.carousel.vertical .carousel-control {
+    left: auto;
+    width: 50px;
+}
+.carousel.vertical .carousel-control.up, .carousel.vertical .carousel-control.down {
+    background-color: #111;
+    height: 32px;
+    opacity: 1;
+    right: 0;
+    top: 47%;
+}
+.carousel.vertical .carousel-control.down {
+    top: 53%;
+}
+.carousel.vertical .carousel-control.up:hover, .carousel.vertical .carousel-control.down:hover{
+    background-color: #fff;
+    color:#111;
+}
+.carousel.vertical .carousel-control i {
+    line-height: 32px;
+}
+#carousel-example-vertical .carousel-caption{
+    left: 10%;
+    right: auto;
+    top:0;
+    text-align: left;
+    padding: 0px;
+}
+.tv-social-icon{
+    width: 370px;
+    background: #000;
+    padding: 20px;
+}
+.tv-logo-title{
+    width: 370px;
+    background: rgba(32, 32, 32, 0.9);
+    padding: 30px 50px 50px;
+}
+.tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+    clear: both;
+    font-size: 46px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:#fff;
+
+}
+.tv-logo-img > img{
+    position: relative;
+    top: 11px;
+    width: 24%;
+}
+.tv-logo-title p, .tv-feature-details, .tv-price-box, .tv-shop-detail, .tv-footer-logo p, .tv-contact-link, .tv-social-link-box, .tv-copyright-box > p, .tv-block-heading{
+    text-align: center;
+}
+.tv-social-icon-list a{
+    background: #363636;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-shadow: none;
+    width: 40px;
+    margin-left:3px; 
+}
+.tv-social-icon-list a:hover{
+    background: #fff;
+    color: #111;
+}
+.tv-social-icon-list{
+    text-align: right;
+}
+.tv-social-icon-list li{
+    display: inline;
+}
+.tv-social-icon{
+    background: #111;
+    padding: 30px 20px;
+    width: 370px;
+}
+.tv-tagline, .tv-comment-list {
+    margin-top: 50px;
+}
+.tv-tagline h2, .tv-tagline h1 {
+    font-size: 36px;
+    line-height: 46px;
+}
+
+/*navbar
+------------------*/
+
+.tv-navbar-default {
+    background-color: transparent;
+    border: medium none;
+}
+.tv-navbar-default .navbar-nav .nav-link {
+    color: #fff;
+    padding: 20px 35px;
+}
+.tv-navbar-default .navbar-nav .nav-link {
+    color: #fff;
+    font-size: 16px;
+    padding: 25px 45px;
+}
+.tv-navbar-default .navbar-nav .nav-link.active, .tv-navbar-default .navbar-nav .nav-link.active:focus, .tv-navbar-default .navbar-nav .nav-link.active:hover{
+    color:#fff;
+}
+.tv-navbar-default .navbar-nav .nav-link:hover{
+    background: #111 !important;
+    color:#fff;
+}
+.navbar {
+    border: 1px solid transparent;
+    margin-bottom: 0;
+    margin-top: -70px;
+    min-height: 50px;
+    position: relative;
+    border: none;
+}
+.tv-welcome-banner{
+    background: rgba(0, 0, 0, 0) url("../images/welcome-banner.jpg") no-repeat scroll center top / cover ;
+    min-height: 365px;
+    position: relative;
+}
+.tv-welcome-box {
+    color: #fff;
+    padding: 52px 0;
+}
+.tv-welcome-box > h2 {
+    font-size: 60px;
+}
+.tv-welcome-box > p{
+    color: #a3a3a3;
+    display: block;
+    font-size: 16px;
+    margin: 5px 0 20px;
+    max-height: 7.1em;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
+.tv-site-btn {
+    background: #d94c28;
+    border: medium none;
+    border-radius: 20px;
+    box-shadow: 9px 0 0 0 #d89327 inset;
+    color: #fff;
+    display: inline-block;
+    font-family: "Baloo Thambi",sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    margin-top: 10px;
+    padding: 12px 30px;
+    transition: all 0.3s ease-in-out 0s;
+}
+.tv-site-btn:hover{
+    background: #111;
+    box-shadow: none;
+    color:#fff;
+}
+.tv-block-heading > h2, .tv-block-heading > h1 {
+    font-size: 48px;
+    text-transform: uppercase;
+    color:#111;
+    margin-bottom: 80px;
+}
+.tv-block-heading > h2::before, .tv-block-heading > h1::before,
+.tv-block-heading > h2::after, .tv-block-heading > h1::after {
+    display: inline-block;
+    content: "";
+    border-top: .3rem solid #363636;
+    width: 4rem;
+    margin: -0.2rem 1rem;
+    transform: translateY(-1rem);
+}
+.tv-heading-img img {
+    left: -85px;
+    position: relative;
+    top: 12px;
+    width: 4%;
+}
+.tv-about-details > p {
+    color: #363636;
+    font-size: 16px;
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+.tv-about-details span{
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 35px;
+    color:#D89327;
+}
+.tv-about-details span a{
+    color: #363636;
+}
+.tv-feature-banner{
+    background: rgba(0, 0, 0, 0) url("../images/features.jpg") no-repeat scroll center top / cover ;
+    min-height: 384px;
+    position: relative;
+}
+.tv-feature-box {
+    padding: 90px 0;
+    color: #fff;
+    display: inline-block;
+}
+.tv-feature-box img {
+    background: #111;
+    border-radius: 20px;
+    height: 90px;
+    padding: 22px;
+    width: 90px;
+}
+.tv-feature-details h3 { 
+    margin: 20px 0 10px;
+}
+.tv-feature-details > p {
+    font-size: 16px;
+}
+.tv-feature-img img:hover, .tv-share-post-links li a:hover, .tv-recent-tag ul li:hover, .tv-back-to-top:hover{
+    background: #d94c28;
+}
+.tv-service-details > h3 {
+    color: #363636;
+    font-size: 26px;
+}
+.tv-service-details span {
+    background: #d94c28 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+    font-size: 22px;
+}
+.tv-service-details > p {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 14px;
+}
+.tv-service-list li:last-child{
+    margin-top: 50px;
+}
+.tv-service-img img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+.tv-hovereffect {
+    width: 100%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+}
+.tv-hovereffect .tv-overlay {
+    position: absolute;
+    overflow: hidden;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0,1);
+    -ms-transform: scale(0,1);
+    transform: scale(0,1);
+}
+.tv-hovereffect:hover .tv-overlay {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.tv-hovereffect img {
+    display: block;
+    position: relative;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.tv-hovereffect:hover img {
+    filter: brightness(0.6);
+    -webkit-filter: brightness(0.6);
+}
+.tv-hovereffect a {
+    background: #111;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    transition: opacity 0.35s ease 0s, transform 0.35s ease 0s;
+    width: 50px;
+}
+.tv-hovereffect a:hover{
+    background:#D94C28;
+}
+.tv-link-icon {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.tv-hovereffect:hover a{
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.tv-link-icon li{
+    display: inline;
+}
+.tv-price-img img {
+    margin-left: auto;
+    margin-right: auto;
+}
+.tv-price-box {
+    padding: 20px;
+    box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.2);
+}
+.tv-price-box:hover{
+    background: #8BA72E; 
+}
+.tv-price-box h3 {
+    color: #d89327;
+    font-size: 30px;
+    margin: 25px 0 40px;
+    position: relative;
+}
+.tv-price-box h3::before {
+    bottom: -25px;
+    color: #d94c28;
+    content: ". . .";
+    font-size: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+.tv-price-box h2 {
+    color: #ba2257;
+    font-size: 40px;
+}
+.tv-plan-features {
+    margin: 15px 0;
+}
+.tv-plan-features li {
+    color: #363636;
+    line-height: 28px;
+}
+.tv-price-box:hover h3, .tv-price-box:hover h2, .tv-price-box:hover .tv-plan-features li, .tv-blog-box:hover .tv-blog-details h3, .tv-blog-box:hover .tv-blog-details span{
+    color:#fff;
+}
+.tv-testimonial-banner{
+    background: rgba(0, 0, 0, 0) url("../images/testimonial.jpg") no-repeat scroll center top / cover ;
+    min-height: 530px;
+    position: relative;
+}
+#myCarousel {
+    background: transparent none repeat scroll 0 0;
+    padding: 100px 0;
+}
+#myCarousel .carousel-inner {
+    background: rgba(255, 255, 255, 0.5);
+    height: 300px;
+}
+#myCarousel .carousel-control.left, #myCarousel .carousel-control.right{
+    background-image: none;
+}
+#myCarousel .carousel-control{
+    opacity: 1;
+    top: 50%;
+}
+#myCarousel .carousel-control i {
+    background: #111;
+    color: #fff;
+    font-size: 20px;
+    height: 32px;
+    line-height: 32px;
+    text-shadow: none;
+    width: 50px;
+}
+#myCarousel .carousel-control i:hover{
+    background-color: #D94C28;
+    color:#111;
+}
+#myCarousel .carousel-caption {
+    bottom: auto;
+    left: 0;
+    padding: 0;
+    right: 0;
+    top: 12%;
+    transform: translate(0%, 12%);
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tv-client-img img {
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
+.tv-client-details h3 {
+    color: #d94c28;
+    margin: 15px 0;
+    text-shadow: none;
+}
+.tv-client-details p {
+    color: #363636;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    text-shadow: none;
+}
+.tv-blog-details span{
+    color: #787878;
+}
+.tv-blog-details {
+    padding: 20px;
+    text-align: center;
+}
+.tv-blog-details h3 {
+    color: #d89327;
+    font-size: 22px;
+    line-height: 24px;
+    margin: 20px 0;
+}
+.tv-blog-box:hover .tv-blog-details {
+    background: #8ba72e;
+}
+.tv-instagram-img .col-lg-2 {
+    padding: 0;
+    width: 11.1%;
+}
+.insta-image {
+    position: relative;
+}
+.insta-image img {
+    width: 100%;
+    position: relative;
+}
+#instafeed .likes {
+    background: #D94C28;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    font-size: 1em;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+    top: 0;
+    transition: opacity 100ms ease 0s;
+    width: 100%;
+    font-size: 16px;
+}
+#instafeed a:hover .likes {
+    opacity: 1;
+}
+.tv-shop-box {
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2);
+    padding: 20px 20px 30px;
+}
+.tv-shop-img img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+.tv-shop-detail h3 {
+    color: #d89327;
+    font-size: 22px;
+}
+.tv-shop-detail span {
+    display: block;
+    font-size: 32px;
+    margin: 20px 0 10px;
+}
+.tv-footer-content{
+    background: #363636;
+    padding: 40px 0;
+}
+.tv-footer-logo{
+    color: #fff;
+}
+.tv-contact-link a, .tv-contact-link p {
+    color: #fff;
+    font-size: 17px;
+}
+.tv-contact-link a:hover, .tv-contact-address-list a:hover{
+    color: #d94c28;
+}
+.tv-contact-link li {
+    line-height: 30px;
+}
+.tv-contact-link a i, .tv-contact-link p i, .tv-contact-address-list li i {
+    color: #d94c28;
+    margin-right: 5px;
+}
+.tv-contact-link {
+    padding: 36px 0;
+}
+.tv-social-links a {
+    background: #d94c28 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+}
+.tv-social-links a:hover{
+    background: #111;
+}
+.tv-social-links li {
+    display: inline;
+}
+.tv-social-links{
+    margin-top: 20px;
+}
+.tv-social-link-box h3 {
+    color: #fff;
+    text-transform: uppercase;
+}
+.tv-social-link-box {
+    padding: 32px 0;
+}
+.tv-back-to-top {
+    background: #fff;
+    bottom: 10px;
+    color: #111;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 28px;
+    height: 45px;
+    line-height: 50px;
+    outline: medium none;
+    position: fixed;
+    right: 15px;
+    text-align: center;
+    text-decoration: none;
+    width: 35px;
+    z-index: 9999;
+}
+.tv-bounce {
+    animation: 2s linear 0s normal none infinite running bounce;
+    display: inline-block;
+    position: relative;
+}
+@keyframes bounce {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -0.2em;
+    }
+    70% {
+        top: -0.3em;
+    }
+    100% {
+        top: 0;
+    }
+}
+.tv-copyright-box{
+    background: #D94C28;
+    padding: 15px 0;
+}
+.tv-copyright-box > p{
+    color: #fff;
+}
+.tv-copyright-box a{
+    font-size: 15px;
+    font-weight: 600;
+}
+.tv-copyright-box a:hover{
+    color: #111;
+}
+
+/*about Page
+------------------*/
+
+.tv-inner-banner{
+    background: rgba(0, 0, 0, 0) url("../images/inner-banner.jpg") no-repeat scroll center top / cover ;
+    min-height: 520px;
+    position: relative;
+}
+.tv-inner-page-logo {
+    left: 10%;
+    position: absolute;
+    color:#fff;
+}
+
+/*contact page
+------------------*/
+
+.tv-map iframe{
+    height: 300px;
+    width:100%;
+}
+.tv-contact-details h3, .tv-contact-address-details h3 {
+    color: #d89327;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+.form-control:focus{
+    border-color: #363636;
+}
+.tv-contact-address-list li {
+    line-height: 40px;
+}
+.tv-contact-address-details {
+    padding-left: 40px;
+}
+.tv-contact-address-list a, .tv-contact-address-list p{
+    font-size: 16px;
+}
+.tv-single-blog-title h2, .tv-single-blog-title h1 {
+    color: #363636;
+    font-size: 34px;
+}
+.tv-blog-post-date p, .tv-blog-post-date li{
+    display: inline;
+}
+.tv-blog-post-date {
+    font-size: 14px;
+    margin: 15px 0 20px;
+}
+.tv-blog-post-date > li {
+    margin-right: 15px;
+}
+.tv-blog-post-date a i {
+    color: #d89327;
+    margin-right: 3px;
+}
+.tv-blog-post-date a:hover{
+    color: #d89327;
+}
+.tv-single-blog-para blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #D94C28;
+}
+.tv-single-blog-para p {
+    font-size: 15px;
+    margin-block-end: 10px;
+    line-height: 22px;
+}
+.tv-single-blog-para blockquote p {
+    font-size: 14px;
+    font-weight: 600;
+}
+.tv-single-blog-para blockquote footer {
+    color: #D89327;
+}
+.tv-single-blog-img {
+    margin-bottom: 30px;
+}
+.tv-post-tags span, .tv-share-post-links span{
+    color: #D89327;
+    font-size: 22px;
+    font-family: "Baloo Thambi", sans-serif;
+    margin-right: 10px;
+}
+.tv-post-tags span a{
+    color:#111;
+    font-family: "Questrial", sans-serif;
+    font-size: 14px;
+}
+.tv-share-post-links{
+    margin-top: 15px;
+}
+.tv-share-post-links ul, .tv-share-post-links li {
+    display: inline;
+}
+.tv-share-post-links li a {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+}
+.tv-comment-list .media-heading {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.tv-comment-list .media, .tv-comment-all-list .media{
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+.tv-comments-list-box h2 {
+    margin-top: 60px;
+    color: #D94C28;
+    margin-bottom: 28px;
+}
+.tv-comment-all-list .media-heading small {
+    display: block;
+    color: #D89327;
+    margin: 5px 0 10px;
+}
+.tv-rightside-content{
+    background: #D89327;
+    padding: 30px;
+}
+.tv-post-categories h3, .tv-post-search h3, .tv-post-recent-posts h3, .tv-post-recent-Tag h3{
+    color: #fff;
+    margin-bottom: 18px;
+    font-size: 28px;
+    margin-top: 40px;
+}
+.tv-categories-list ul li a, .tv-recent-post ul li a{
+    color: #fff;
+    line-height: 30px;
+}
+.tv-categories-list ul li a::before, .tv-recent-post ul li a::before {
+    content: '\f054';
+    font-family: "Font Awesome 6 Free"; font-weight: 900;
+    font-size: 12px;
+    color:#111;
+    margin-right: 5px;
+}
+.tv-categories-list ul li a:hover, .tv-recent-post ul li a:hover{
+    color:#111;
+}
+.add-on .input-group-btn > .btn {
+    border-left-width:0;left:-2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* stop the glowing blue shadow */
+.add-on .form-control:focus {
+    box-shadow:none;
+    -webkit-box-shadow:none; 
+    border-color:#cccccc; 
+}
+#tv-srch-term{
+    background: transparent none repeat scroll 0% 0%;
+    color: rgb(255, 255, 255);
+    border-color: #fff;
+}
+.tv-search-btn .input-group-btn .btn {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+.tv-search-btn .form-control::-moz-placeholder {
+    color: #fff;
+    opacity: 1;
+}
+.tv-search-btn .form-control::-webkit-input-placeholder{
+    color: #fff;
+    opacity: 1;
+}
+.tv-recent-comment ul li a{
+    color: #fff;
+    line-height: 22px;
+}
+.tv-recent-tag ul li {
+    border-radius: 5px;
+    margin: 0 3px 5px 0;
+    padding: 8px;
+    text-transform: capitalize;
+    display: inline-block;
+    background: #111;
+}
+.tv-recent-tag ul li a {
+    color: #fff;
+    font-size: 12px;
+}
+
+/*
+Template Name: purrkatty
+File Name: responsive.css
+Author Name: ThemeVault
+Author URI: http://www.themevault.net/
+License URI: http://www.themevault.net/license/
+*/
+@media (max-width: 1199px){
+    .tv-tagline, .tv-comment-list {
+        margin-top: 30px;
+    }
+    .tv-tagline h2, .tv-tagline h1 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+}
+@media (max-width: 991px){
+    .tv-social-icon-list a {
+        font-size: 14px;
+        height: 35px;
+        line-height: 35px;
+        width: 35px;
+    }
+    .tv-social-icon {
+        padding: 20px 20px;
+        width: 350px;
+    }
+    .tv-logo-title {
+        width: 350px;
+        padding: 10px 60px 20px;
+    }
+    .tv-logo-img > img {
+        width: 18%;
+    }
+    .tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+        font-size: 38px;
+    }
+    .tv-tagline h2, .tv-tagline h1 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+    .tv-tagline, .tv-comment-list {
+        margin-top: 20px;
+    }
+    .tv-navbar-default .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 20px 35px;
+    }
+    .carousel.vertical .carousel-control.up{
+        top: 45%;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 53%;
+    }
+    .tv-welcome-box > h2 {
+        font-size: 36px;
+    }
+    .tv-welcome-box > p {
+        font-size: 14px;
+    }
+    .tv-welcome-banner {
+        min-height: 320px;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        font-size: 38px;
+        text-transform: uppercase;
+        color: #111;
+        margin-bottom: 60px;
+    }
+    .tv-block-heading > h2::before, .tv-block-heading > h1::before, .tv-block-heading > h2::after, .tv-block-heading > h1::after {
+        width: 3rem;
+    }
+    .tv-paddingTop-80 {
+        padding-top: 60px;
+    }
+    .tv-heading-img img {
+        left: -65px;
+        top: 9px;
+        width: 6%;
+    }
+    .tv-about-details, .tv-service-details, .tv-footer-logo{
+        text-align: center;
+    }
+    .tv-feature-box {
+        padding: 70px 0;
+        color: #fff;
+    }
+    .tv-feature-details > p {
+        font-size: 14px;
+    }
+    .tv-feature-box img {
+        height: 80px;
+        padding: 22px;
+        width: 80px;
+    }
+    .tv-service-list li:last-child {
+        margin-top: 30px;
+    }
+    .tv-service-details span {
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+        font-size: 16px;
+    }
+    .tv-service-details > h3 {
+        font-size: 24px;
+    }
+    .tv-service-details > p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .tv-hovereffect a {
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+    }
+    .tv-price-box h3 {
+        font-size: 23px;
+        margin: 20px 0 35px;
+    }
+    .tv-price-box h2 {
+        font-size: 30px;
+    }
+    .tv-blog-details h3 {
+        font-size: 20px;
+        line-height: 22px;
+        margin: 15px 0;
+    }
+    .tv-shop-box{
+        margin-bottom: 20px;
+    }
+    .tv-shop-detail span {
+        font-size: 28px;
+    }
+    .tv-shop-detail h3 {
+        font-size: 20px;
+    }
+    .tv-shop-detail span {
+        font-size: 28px;
+        margin: 10px 0 0px;
+    }
+    .tv-footer-logo .tv-logo-img > img {
+        width: 8%;
+        left: -87px;
+    }
+    .tv-social-link-box {
+        padding: 0px 0 26px;
+    }
+    .tv-inner-banner {
+        min-height: 350px;
+    }
+    .navbar {
+        margin-top: -60px;
+    }
+    .tv-single-blog-title h2, .tv-single-blog-title h1 {
+        font-size: 28px;
+    }
+    .tv-blog-post-date li {
+        font-size: 12px;
+    }
+    .tv-single-blog-para p {
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .tv-comments-list-box h2 {
+        font-size: 26px;
+    }
+    .tv-post-categories h3, .tv-post-search h3, .tv-post-recent-posts h3, .tv-post-recent-Tag h3 {
+        font-size: 22px;
+        margin-top: 30px;
+    }
+    .tv-categories-list ul li a, .tv-recent-post ul li a {
+        font-size: 12px;
+        line-height: 26px;
+    }
+    .tv-recent-tag ul li a {
+        font-size: 11px;
+    }
+    .tv-contact-details h3, .tv-contact-address-details h3 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .tv-contact-address-list li {
+        line-height: 32px;
+    }
+    .tv-contact-address-list a, .tv-contact-address-list p {
+        font-size: 15px;
+    }
+    .tv-site-btn{
+        font-size: 14px;
+    }
+    .tv-social-links a {
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+    }
+    .tv-contact-link a, .tv-contact-link p {
+        font-size: 15px;
+    }
+}
+@media (max-width: 767px){
+    .tv-social-icon-list a {
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+    }
+    .tv-social-icon {
+        padding: 10px 20px;
+    }
+    .navbar-toggler {
+        border: 1px solid #D94C28 !important;
+    }
+    .tv-navbar-default .navbar-toggler .icon-bar {
+        background-color: #111;
+    }
+    .tv-navbar-default .navbar-toggler:focus, .tv-navbar-default .navbar-toggler:hover {
+        background-color: #D94C28;
+    }
+    .tv-navbar-default .navbar-collapse, .tv-navbar-default .navbar-form{
+        border: none;
+        box-shadow: none;
+    }
+    .tv-navbar-default .navbar-nav .nav-link, .tv-welcome-box{
+        text-align: center;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 54%;
+    }
+    .carousel.vertical .carousel-control.up {
+        top: 44%;
+    }
+    .tv-feature-details{
+        margin-bottom: 20px;
+    }
+    .tv-about-details > p {
+        font-size: 14px;
+        line-height: 25px;
+        margin-bottom: 20px;
+    }
+    .tv-block-heading > h2::before, .tv-block-heading > h1::before, .tv-block-heading > h2::after, .tv-block-heading > h1::after {
+        margin: -0.5rem 1rem;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        font-size: 34px;
+        margin-bottom: 50px;
+    }
+    .tv-paddingTop-80 {
+        padding-top: 50px;
+    }
+    .tv-about-details span {
+        font-size: 20px;
+    }
+    .tv-feature-details h3 {
+        margin: 10px 0 5px;
+    }
+    .tv-feature-box {
+        padding: 40px 0;
+    }
+    .tv-service-img img {
+        width: 40%;
+    }
+    .tv-service-details > h3 {
+        font-size: 20px;
+    }
+    #myCarousel {
+        padding: 50px 0;
+    }
+    .tv-testimonial-banner {
+        min-height: 400px;
+    }
+    .tv-client-details p {
+        font-size: 14px;
+    }
+    .tv-blog-img img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .tv-inner-banner {
+        min-height: 280px;
+    }
+    .tv-rightside-content {
+        margin-top: 40px;
+    }
+    .tv-contact-address-details {
+        padding-left: 0px;
+        margin-top: 40px;
+    }
+}
+@media (max-width: 500px){
+    .tv-social-icon {
+        padding: 10px 20px;
+        width: 280px;
+    }
+    .tv-logo-title {
+        width: 280px;
+        padding: 0px 40px 10px;
+    }
+    .tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+        font-size: 32px;
+    }
+    .tv-logo-img > img {
+        width: 16%;
+    }
+    .tv-tagline, .tv-comment-list {
+        margin-top: 15px;
+    }
+    .tv-tagline h2, .tv-tagline h1 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .carousel.vertical .carousel-control.up {
+        top: 42%;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 56%;
+    }
+    .tv-welcome-box > h2 {
+        font-size: 30px;
+    }
+    .tv-welcome-banner {
+        min-height: 280px;
+    }
+    .tv-welcome-box {
+        padding: 30px 0;
+    }
+    .tv-inner-banner {
+        min-height: 250px;
+    }
+}
+@media (max-width: 400px){
+    .width-100{
+        width:100%;
+    }
+    .tv-social-icon-list {
+        text-align: center;
+    }
+    .tv-social-icon {
+        width: 200px;
+    }
+    .tv-logo-img > img {
+        top: 7px;
+        width: 14%;
+    }
+    .tv-logo-title {
+        width: 200px;
+        padding: 0px 20px 10px;
+    }
+    .tv-logo-title p{
+        font-size: 12px;
+    }
+    .tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+        font-size: 26px;
+    }
+    .tv-tagline{
+        display: none;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 45%;
+    }
+    .carousel.vertical .carousel-control.up {
+        top: 26%;
+    }
+    #carousel-example-vertical .carousel-caption {
+        left: 6%;
+    }
+    .tv-navbar-default .navbar-nav .nav-link {
+        padding: 15px 35px;
+    }
+    .tv-welcome-box > h2 {
+        font-size: 24px;
+    }
+    .tv-welcome-box > p {
+        font-size: 13px;
+        margin: 5px 0 15px;
+    }
+    .tv-site-btn {
+        font-size: 13px;
+        padding: 10px 22px;
+    }
+    .tv-welcome-banner {
+        min-height: 245px;
+    }
+    .tv-heading-img img {
+        left: -52px;
+        top: 6px;
+        width: 8%;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        font-size: 26px;
+    }
+    .tv-block-heading > h2::before, .tv-block-heading > h1::before, .tv-block-heading > h2::after, .tv-block-heading > h1::after {
+        width: 2rem;
+        margin: -0.7rem 1rem;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        margin-bottom: 40px;
+    }
+    .tv-paddingTop-80 {
+        padding-top: 40px;
+    }
+    .tv-about-details span {
+        font-size: 18px;
+    }
+    .tv-feature-details h3 {
+        font-size: 20px;
+    }
+    .tv-feature-banner {
+        background: rgba(0, 0, 0, 0) url("../images/features.jpg") no-repeat scroll 62% top / cover;
+    }
+    .tv-service-img img {
+        width: 50%;
+    }
+    .tv-client-details p {
+        font-size: 12px;
+    }
+    .tv-client-details h3 {
+        margin: 8px 0;
+        font-size: 20px;
+    }
+    .tv-shop-detail span {
+        font-size: 25px;
+        margin: 5px 0 0px;
+    }
+    .tv-footer-logo .tv-logo-img > img {
+        width: 11%;
+        left: -63px;
+    }
+    .tv-contact-link a, .tv-contact-link p {
+        font-size: 13px;
+    }
+    .tv-social-link-box h3 {
+        font-size: 22px;
+    }
+    .tv-social-links a {
+        font-size: 12px;
+        height: 35px;
+        line-height: 37px;
+        width: 35px;
+    }
+    .tv-copyright-box a {
+        font-size: 14px;
+    }
+    .tv-copyright-box > p {
+        font-size: 12px;
+    }
+    .tv-inner-banner {
+        min-height: 220px;
+    }
+    .tv-single-blog-details {
+        text-align: center;
+    }
+    .tv-single-blog-title h2, .tv-single-blog-title h1 {
+    font-size: 24px;
+}
+.tv-single-blog-para blockquote{
+    text-align: left;
+}
+}
+
+/* ==========================================================================
+   PurrKatty — template-specific Bootstrap 5 shims.
+
+   The SHARED Bootstrap 3 -> 5 compatibility layer lives in
+   web/scripts/upgrade-qa/bs3-compat.css and is linked BEFORE style.css.
+   Only rules peculiar to THIS template belong here.
+   ========================================================================== */
+
+/* --- The five menu colours -------------------------------------------------------
+   v1 set them inline on every page's five links. */
+.tv-nav-main { background: #8ba72e; }
+.tv-nav-about { background: #ba2257; }
+.tv-nav-gallery { background: #5a4ca6; }
+.tv-nav-blog { background: #d89327; }
+.tv-nav-contact { background: #d94c28; }
+
+/* --- The first slide's tagline was inline `color:#111` ------------------------------ */
+.tv-tagline .tv-tagline-dark { color: #111; }
+
+/* --- Back to top ---------------------------------------------------------------
+   v1 hid it with an inline `style="display:none"` and animated it with
+   jQuery's fadeIn. v2 toggles a class instead. It is a <button> now; v1's
+   own `.tv-back-to-top` rule keeps the look. */
+button.tv-back-to-top {
+    display: none;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease 0s;
+}
+button.tv-back-to-top.is-visible { display: block; opacity: 1; }
+
+/* --- The comment avatars were inline 100x100 ----------------------------------------- */
+.tv-avatar { width: 100px; height: 100px; object-fit: cover; }
+
+/* --- Lightbox (main.js builds it in place of lightbox.js) ---------------------- */
+.tv-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1090;
+    background: rgba(0, 0, 0, .9);
+    align-items: center;
+    justify-content: center;
+}
+.tv-lightbox.is-open { display: flex; }
+.tv-lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .5);
+}
+.tv-lightbox button {
+    position: absolute;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 40px;
+    line-height: 1;
+    padding: 10px 18px;
+    cursor: pointer;
+}
+.tv-lightbox button:hover,
+.tv-lightbox button:focus-visible { color: var(--tv-amber); }
+.tv-lb-close { top: 10px; right: 16px; font-size: 48px; }
+.tv-lb-prev { left: 10px; top: 50%; transform: translateY(-50%); }
+.tv-lb-next { right: 10px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 575.98px) {
+    .tv-lightbox button { font-size: 30px; }
+    .tv-lb-close { font-size: 36px; }
+}
+
+/* --- Forms ----------------------------------------------------------------------
+   A static template posts nowhere; main.js validates and shows the note. */
+.tv-form-note { display: block; margin: 12px 0 0; font-size: 14px; color: var(--tv-orange); }
+.tv-form-note:focus { outline: none; }
+.form-control.is-invalid, input.is-invalid, select.is-invalid, textarea.is-invalid { border-color: #d9534f !important; }
+/* the Send Message / Post Comment pills were <a>s; as <button>s the browser
+   chrome comes off — v1's .tv-site-btn rule is the look */
+button.tv-site-btn { border: 0; }
+
+/* --- The vertical banner carousel ---------------------------------------------------
+   v1 gave the slide `width: auto` — harmless on Bootstrap 3's block slide.
+   Bootstrap 5's slide is a float with `margin-right: -100%`, and `width:
+   auto` on a float is shrink-to-fit: the banner photo grew to twice the
+   viewport on a phone. The slide is the viewport's width, as it was. */
+.carousel.vertical .carousel-inner > .carousel-item { width: 100%; }
+
+/* --- The blog sidebar's search button ---------------------------------------------
+   Bootstrap 3's .btn-default (white, grey border); Bootstrap 5 has no such
+   class and the template does not style it. */
+.tv-search-btn .btn-default { color: #333; background-color: #fff; border: 1px solid #ccc; }
+.tv-search-btn .btn-default:hover { background-color: #e6e6e6; border-color: #adadad; }
+
+/* --- The five new pages (owner's picks 2026-09-15) ---------------------------------
+   Services, booking, shop, product, 404. Built from v1's own blocks; only
+   what those blocks do not cover is here. */
+.tv-lead-text { color: #363636; font-size: 16px; line-height: 28px; margin-bottom: 40px; text-align: center; }
+.tv-lead-text a { color: var(--tv-orange); text-decoration: underline; }
+/* services: a card per service, the round orange icon from v1's service list */
+.tv-services-grid > [class*="col-"] { margin-bottom: 30px; display: flex; }
+.tv-service-card { display: flex; gap: 25px; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 20px 2px rgba(0, 0, 0, .08); width: 100%; }
+.tv-service-icon { flex: 0 0 auto; background: var(--tv-orange); border-radius: 50%; color: #fff; display: inline-block; width: 60px; height: 60px; line-height: 60px; text-align: center; font-size: 24px; }
+.tv-service-body h3 { color: #363636; font-size: 26px; margin-bottom: 10px; }
+.tv-service-body p { color: #363636; font-size: 15px; line-height: 26px; margin-bottom: 10px; }
+.tv-service-meta { color: var(--tv-amber); font-size: 18px; font-family: var(--tv-font-head); }
+.tv-services-cta h3 { color: var(--tv-amber); font-size: 30px; margin-bottom: 10px; }
+.tv-services-cta p { color: #363636; font-size: 16px; line-height: 28px; max-width: 640px; margin: 0 auto 10px; }
+@media (max-width: 575.98px) { .tv-service-card { flex-direction: column; gap: 15px; } }
+/* booking */
+.tv-booking-form .form-group { margin-bottom: 20px; }
+.tv-booking-form .form-control { height: 45px; }
+.tv-booking-form textarea.form-control { height: 120px; }
+.tv-booking-form select.form-control { appearance: auto; }
+.tv-steps { padding-left: 0; list-style: none; counter-reset: step; margin-bottom: 40px; }
+.tv-steps li { position: relative; padding-left: 55px; margin-bottom: 20px; color: #363636; font-size: 15px; line-height: 26px; counter-increment: step; }
+.tv-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 40px; height: 40px; line-height: 40px; text-align: center; border-radius: 50%; background: var(--tv-orange); color: #fff; font-family: var(--tv-font-head); font-size: 18px; }
+.tv-booking-contact { text-align: left; }
+.tv-booking-contact li { margin-bottom: 12px; font-size: 16px; color: #363636; }
+.tv-booking-contact li a, .tv-booking-contact li p { color: #363636; }
+.tv-booking-contact i { color: var(--tv-orange); width: 24px; }
+@media (max-width: 767.98px) { .tv-booking-aside { margin-top: 60px; } }
+/* shop: the filter buttons and the tiles' links */
+.tv-shop-filter { text-align: center; margin-bottom: 40px; }
+.tv-shop-filter li { display: inline-block; margin: 0 4px 10px; }
+.tv-shop-filter .tv-site-btn { padding: 8px 22px; font-size: 14px; background: #fff; color: #363636; box-shadow: inset 0 0 0 2px #ddd; }
+.tv-shop-filter .tv-site-btn.active, .tv-shop-filter .tv-site-btn:hover { background: var(--tv-orange); color: #fff; box-shadow: 9px 0 0 0 var(--tv-amber) inset; }
+.tv-shop-grid > [class*="col-"] { margin-bottom: 30px; }
+.tv-shop-grid > .is-filtered-out { display: none; }
+.tv-shop-detail h3 a { color: inherit; }
+.tv-shop-detail h3 a:hover { color: var(--tv-orange); }
+/* product */
+.tv-product-cat a { color: var(--tv-amber); font-family: var(--tv-font-head); font-size: 16px; text-transform: uppercase; letter-spacing: 2px; }
+.tv-product-price { font-family: var(--tv-font-head); font-size: 40px; color: var(--tv-orange); margin: 5px 0 15px; }
+.tv-product-price small { font-size: 16px; color: #363636; font-family: var(--tv-font-body); }
+.tv-product-summary > p { color: #363636; font-size: 16px; line-height: 28px; margin-bottom: 20px; }
+.tv-product-facts { margin: 0 0 25px; padding: 0; }
+.tv-product-facts li { color: #363636; font-size: 15px; line-height: 26px; padding-left: 20px; position: relative; }
+.tv-product-facts li::before { content: ""; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--tv-amber); }
+.tv-order-form { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 15px; margin-bottom: 15px; }
+.tv-order-form .form-label { margin: 0; font-size: 16px; }
+.tv-order-form .form-control { width: 80px; height: 45px; }
+.tv-order-form .tv-site-btn { margin-top: 0; }
+.tv-order-form .tv-form-note { flex-basis: 100%; }
+.tv-product-note { color: #363636; font-size: 14px; }
+.tv-product-note i { color: var(--tv-orange); margin-right: 6px; }
+.tv-related-title { color: var(--tv-amber); font-size: 30px; margin-bottom: 30px; text-align: center; }
+@media (max-width: 767.98px) { .tv-product-summary { margin-top: 40px; } }
+/* 404 */
+.tv-404 { padding-bottom: 20px; }
+.tv-404-code { font-family: var(--tv-font-head); font-size: 8rem; line-height: 1; color: var(--tv-orange); margin-bottom: 20px; }
+.tv-404-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+@media (max-width: 575.98px) { .tv-404-code { font-size: 5rem; } }
+/* ==========================================================================
+   4. Components - ported from v1's style.css, with the Bootstrap 3 selectors
+   rewritten for Bootstrap 5. See _port-css.mjs for the exact mapping.
+
+   ORDER MATTERS, and it is taken from the <link> tags rather than chosen here.
+   Where two of a template's stylesheets set the same property at the same
+   specificity, the later one wins — so reordering them silently changes the
+   design. AquaLand loaded scrolling-nav.css before style.css; appending it
+   after instead turned ".navbar{padding:10px}" into "padding:20px 0" and added
+   20px to the menu bar at every desktop width.
+
+   The responsive stylesheet is simply the last link: v1's queries are
+   max-width based and land on breakpoints Bootstrap 5 shares, so they carry
+   across unchanged.
+   ========================================================================== */
+/*
+Template Name: purrkatty
+File Name: style.css
+Author Name: ThemeVault
+Author URI: http://www.themevault.net/
+License URI: http://www.themevault.net/license/
+*/
+
+html {
+}
+html, body {width:100%; padding:0; margin:0; color:#111;}
+a, button {
+    text-decoration: none;
+    cursor: pointer;
+}
+a {
+    color: inherit;
+}
+a:hover,
+a:active,
+a:focus {
+    color: inherit;
+    outline: none !important;
+    text-decoration: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    list-style-type: none;
+}
+.form-control::-webkit-input-placeholder {
+    opacity: 1;
+}
+.placeholder-fix:focus::-webkit-input-placeholder  {color:transparent !important; }
+.placeholder-fix:focus::-moz-placeholder   {color:transparent !important;}
+.placeholder-fix:-moz-placeholder   {color:transparent !important;}
+textarea:focus,textArea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+    border-color: none;
+    box-shadow: none !important;
+    outline: 0 none;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button:active,
+button:focus {
+    outline: none !important;
+    text-decoration: none;
+}
+/*typography
+----------------------*/
+
+body {
+    color: #000;
+    font-family: "Questrial", sans-serif;
+    background-color: #fff;
+    letter-spacing: 1px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Baloo Thambi", sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0
+}
+
+/*common
+----------------------*/
+
+.tv-bgclr-black{
+    background-color: #111;
+}
+.tv-paddingTop-80{
+    padding-top: 80px;
+}
+.tv-padding0{
+    padding: 0;
+}
+
+/* slider
+----------------------*/
+
+.carousel.vertical .carousel-inner {
+    height: 100%;
+    width: auto;
+}
+.carousel.vertical .carousel-inner > .carousel-item {
+    width: auto;
+    -webkit-transition: 0.6s ease-in-out top;
+    transition: 0.6s ease-in-out top;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel.vertical .carousel-inner > .carousel-item {
+        -webkit-transition: 0.6s ease-in-out;
+        transition: 0.6s ease-in-out;
+    }
+    .carousel.vertical .carousel-inner > .carousel-item-next, .carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-end {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        top: 0;
+    }
+    .carousel.vertical .carousel-inner > .carousel-item-prev, .carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-start {
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+        top: 0;
+    }
+    .carousel.vertical .carousel-inner > .carousel-item-next.carousel-item-start, .carousel.vertical .carousel-inner > .carousel-item-prev.carousel-item-end, .carousel.vertical .carousel-inner > .carousel-item.active {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        top: 0;
+    }
+}
+.carousel.vertical .carousel-inner > .carousel-item.active,
+.carousel.vertical .carousel-inner > .carousel-item-next,
+.carousel.vertical .carousel-inner > .carousel-item-prev {
+    display: block;
+}
+.carousel.vertical .carousel-inner > .carousel-item.active {
+    top: 0;
+}
+.carousel.vertical .carousel-inner > .carousel-item-next,
+.carousel.vertical .carousel-inner > .carousel-item-prev {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item-next {
+    top: 100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item-prev {
+    top: -100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item-next.carousel-item-start,
+.carousel.vertical .carousel-inner > .carousel-item-prev.carousel-item-end {
+    top: 0;
+}
+.carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-start {
+    top: -100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-end {
+    top: 100%;
+}
+.carousel.vertical .carousel-control {
+    left: auto;
+    width: 50px;
+}
+.carousel.vertical .carousel-control.up, .carousel.vertical .carousel-control.down {
+    background-color: #111;
+    height: 32px;
+    opacity: 1;
+    right: 0;
+    top: 47%;
+}
+.carousel.vertical .carousel-control.down {
+    top: 53%;
+}
+.carousel.vertical .carousel-control.up:hover, .carousel.vertical .carousel-control.down:hover{
+    background-color: #fff;
+    color:#111;
+}
+.carousel.vertical .carousel-control i {
+    line-height: 32px;
+}
+#carousel-example-vertical .carousel-caption{
+    left: 10%;
+    right: auto;
+    top:0;
+    text-align: left;
+    padding: 0px;
+}
+.tv-social-icon{
+    width: 370px;
+    background: #000;
+    padding: 20px;
+}
+.tv-logo-title{
+    width: 370px;
+    background: rgba(32, 32, 32, 0.9);
+    padding: 30px 50px 50px;
+}
+.tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+    clear: both;
+    font-size: 46px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:#fff;
+
+}
+.tv-logo-img > img{
+    position: relative;
+    top: 11px;
+    width: 24%;
+}
+.tv-logo-title p, .tv-feature-details, .tv-price-box, .tv-shop-detail, .tv-footer-logo p, .tv-contact-link, .tv-social-link-box, .tv-copyright-box > p, .tv-block-heading{
+    text-align: center;
+}
+.tv-social-icon-list a{
+    background: #363636;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-shadow: none;
+    width: 40px;
+    margin-left:3px; 
+}
+.tv-social-icon-list a:hover{
+    background: #fff;
+    color: #111;
+}
+.tv-social-icon-list{
+    text-align: right;
+}
+.tv-social-icon-list li{
+    display: inline;
+}
+.tv-social-icon{
+    background: #111;
+    padding: 30px 20px;
+    width: 370px;
+}
+.tv-tagline, .tv-comment-list {
+    margin-top: 50px;
+}
+.tv-tagline h2, .tv-tagline h1 {
+    font-size: 36px;
+    line-height: 46px;
+}
+
+/*navbar
+------------------*/
+
+.tv-navbar-default {
+    background-color: transparent;
+    border: medium none;
+}
+.tv-navbar-default .navbar-nav .nav-link {
+    color: #fff;
+    padding: 20px 35px;
+}
+.tv-navbar-default .navbar-nav .nav-link {
+    color: #fff;
+    font-size: 16px;
+    padding: 25px 45px;
+}
+.tv-navbar-default .navbar-nav .nav-link.active, .tv-navbar-default .navbar-nav .nav-link.active:focus, .tv-navbar-default .navbar-nav .nav-link.active:hover{
+    color:#fff;
+}
+.tv-navbar-default .navbar-nav .nav-link:hover{
+    background: #111 !important;
+    color:#fff;
+}
+.navbar {
+    border: 1px solid transparent;
+    margin-bottom: 0;
+    margin-top: -70px;
+    min-height: 50px;
+    position: relative;
+    border: none;
+}
+.tv-welcome-banner{
+    background: rgba(0, 0, 0, 0) url("../images/welcome-banner.jpg") no-repeat scroll center top / cover ;
+    min-height: 365px;
+    position: relative;
+}
+.tv-welcome-box {
+    color: #fff;
+    padding: 52px 0;
+}
+.tv-welcome-box > h2 {
+    font-size: 60px;
+}
+.tv-welcome-box > p{
+    color: #a3a3a3;
+    display: block;
+    font-size: 16px;
+    margin: 5px 0 20px;
+    max-height: 7.1em;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
+.tv-site-btn {
+    background: #d94c28;
+    border: medium none;
+    border-radius: 20px;
+    box-shadow: 9px 0 0 0 #d89327 inset;
+    color: #fff;
+    display: inline-block;
+    font-family: "Baloo Thambi",sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    margin-top: 10px;
+    padding: 12px 30px;
+    transition: all 0.3s ease-in-out 0s;
+}
+.tv-site-btn:hover{
+    background: #111;
+    box-shadow: none;
+    color:#fff;
+}
+.tv-block-heading > h2, .tv-block-heading > h1 {
+    font-size: 48px;
+    text-transform: uppercase;
+    color:#111;
+    margin-bottom: 80px;
+}
+.tv-block-heading > h2::before, .tv-block-heading > h1::before,
+.tv-block-heading > h2::after, .tv-block-heading > h1::after {
+    display: inline-block;
+    content: "";
+    border-top: .3rem solid #363636;
+    width: 4rem;
+    margin: -0.2rem 1rem;
+    transform: translateY(-1rem);
+}
+.tv-heading-img img {
+    left: -85px;
+    position: relative;
+    top: 12px;
+    width: 4%;
+}
+.tv-about-details > p {
+    color: #363636;
+    font-size: 16px;
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+.tv-about-details span{
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 35px;
+    color:#D89327;
+}
+.tv-about-details span a{
+    color: #363636;
+}
+.tv-feature-banner{
+    background: rgba(0, 0, 0, 0) url("../images/features.jpg") no-repeat scroll center top / cover ;
+    min-height: 384px;
+    position: relative;
+}
+.tv-feature-box {
+    padding: 90px 0;
+    color: #fff;
+    display: inline-block;
+}
+.tv-feature-box img {
+    background: #111;
+    border-radius: 20px;
+    height: 90px;
+    padding: 22px;
+    width: 90px;
+}
+.tv-feature-details h3 { 
+    margin: 20px 0 10px;
+}
+.tv-feature-details > p {
+    font-size: 16px;
+}
+.tv-feature-img img:hover, .tv-share-post-links li a:hover, .tv-recent-tag ul li:hover, .tv-back-to-top:hover{
+    background: #d94c28;
+}
+.tv-service-details > h3 {
+    color: #363636;
+    font-size: 26px;
+}
+.tv-service-details span {
+    background: #d94c28 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+    font-size: 22px;
+}
+.tv-service-details > p {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 14px;
+}
+.tv-service-list li:last-child{
+    margin-top: 50px;
+}
+.tv-service-img img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+.tv-hovereffect {
+    width: 100%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+}
+.tv-hovereffect .tv-overlay {
+    position: absolute;
+    overflow: hidden;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0,1);
+    -ms-transform: scale(0,1);
+    transform: scale(0,1);
+}
+.tv-hovereffect:hover .tv-overlay {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.tv-hovereffect img {
+    display: block;
+    position: relative;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.tv-hovereffect:hover img {
+    filter: brightness(0.6);
+    -webkit-filter: brightness(0.6);
+}
+.tv-hovereffect a {
+    background: #111;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    transition: opacity 0.35s ease 0s, transform 0.35s ease 0s;
+    width: 50px;
+}
+.tv-hovereffect a:hover{
+    background:#D94C28;
+}
+.tv-link-icon {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.tv-hovereffect:hover a{
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.tv-link-icon li{
+    display: inline;
+}
+.tv-price-img img {
+    margin-left: auto;
+    margin-right: auto;
+}
+.tv-price-box {
+    padding: 20px;
+    box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.2);
+}
+.tv-price-box:hover{
+    background: #8BA72E; 
+}
+.tv-price-box h3 {
+    color: #d89327;
+    font-size: 30px;
+    margin: 25px 0 40px;
+    position: relative;
+}
+.tv-price-box h3::before {
+    bottom: -25px;
+    color: #d94c28;
+    content: ". . .";
+    font-size: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+.tv-price-box h2 {
+    color: #ba2257;
+    font-size: 40px;
+}
+.tv-plan-features {
+    margin: 15px 0;
+}
+.tv-plan-features li {
+    color: #363636;
+    line-height: 28px;
+}
+.tv-price-box:hover h3, .tv-price-box:hover h2, .tv-price-box:hover .tv-plan-features li, .tv-blog-box:hover .tv-blog-details h3, .tv-blog-box:hover .tv-blog-details span{
+    color:#fff;
+}
+.tv-testimonial-banner{
+    background: rgba(0, 0, 0, 0) url("../images/testimonial.jpg") no-repeat scroll center top / cover ;
+    min-height: 530px;
+    position: relative;
+}
+#myCarousel {
+    background: transparent none repeat scroll 0 0;
+    padding: 100px 0;
+}
+#myCarousel .carousel-inner {
+    background: rgba(255, 255, 255, 0.5);
+    height: 300px;
+}
+#myCarousel .carousel-control.left, #myCarousel .carousel-control.right{
+    background-image: none;
+}
+#myCarousel .carousel-control{
+    opacity: 1;
+    top: 50%;
+}
+#myCarousel .carousel-control i {
+    background: #111;
+    color: #fff;
+    font-size: 20px;
+    height: 32px;
+    line-height: 32px;
+    text-shadow: none;
+    width: 50px;
+}
+#myCarousel .carousel-control i:hover{
+    background-color: #D94C28;
+    color:#111;
+}
+#myCarousel .carousel-caption {
+    bottom: auto;
+    left: 0;
+    padding: 0;
+    right: 0;
+    top: 12%;
+    transform: translate(0%, 12%);
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tv-client-img img {
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
+.tv-client-details h3 {
+    color: #d94c28;
+    margin: 15px 0;
+    text-shadow: none;
+}
+.tv-client-details p {
+    color: #363636;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    text-shadow: none;
+}
+.tv-blog-details span{
+    color: #787878;
+}
+.tv-blog-details {
+    padding: 20px;
+    text-align: center;
+}
+.tv-blog-details h3 {
+    color: #d89327;
+    font-size: 22px;
+    line-height: 24px;
+    margin: 20px 0;
+}
+.tv-blog-box:hover .tv-blog-details {
+    background: #8ba72e;
+}
+.tv-instagram-img .col-lg-2 {
+    padding: 0;
+    width: 11.1%;
+}
+.insta-image {
+    position: relative;
+}
+.insta-image img {
+    width: 100%;
+    position: relative;
+}
+#instafeed .likes {
+    background: #D94C28;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    font-size: 1em;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+    top: 0;
+    transition: opacity 100ms ease 0s;
+    width: 100%;
+    font-size: 16px;
+}
+#instafeed a:hover .likes {
+    opacity: 1;
+}
+.tv-shop-box {
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2);
+    padding: 20px 20px 30px;
+}
+.tv-shop-img img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+.tv-shop-detail h3 {
+    color: #d89327;
+    font-size: 22px;
+}
+.tv-shop-detail span {
+    display: block;
+    font-size: 32px;
+    margin: 20px 0 10px;
+}
+.tv-footer-content{
+    background: #363636;
+    padding: 40px 0;
+}
+.tv-footer-logo{
+    color: #fff;
+}
+.tv-contact-link a, .tv-contact-link p {
+    color: #fff;
+    font-size: 17px;
+}
+.tv-contact-link a:hover, .tv-contact-address-list a:hover{
+    color: #d94c28;
+}
+.tv-contact-link li {
+    line-height: 30px;
+}
+.tv-contact-link a i, .tv-contact-link p i, .tv-contact-address-list li i {
+    color: #d94c28;
+    margin-right: 5px;
+}
+.tv-contact-link {
+    padding: 36px 0;
+}
+.tv-social-links a {
+    background: #d94c28 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+}
+.tv-social-links a:hover{
+    background: #111;
+}
+.tv-social-links li {
+    display: inline;
+}
+.tv-social-links{
+    margin-top: 20px;
+}
+.tv-social-link-box h3 {
+    color: #fff;
+    text-transform: uppercase;
+}
+.tv-social-link-box {
+    padding: 32px 0;
+}
+.tv-back-to-top {
+    background: #fff;
+    bottom: 10px;
+    color: #111;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 28px;
+    height: 45px;
+    line-height: 50px;
+    outline: medium none;
+    position: fixed;
+    right: 15px;
+    text-align: center;
+    text-decoration: none;
+    width: 35px;
+    z-index: 9999;
+}
+.tv-bounce {
+    animation: 2s linear 0s normal none infinite running bounce;
+    display: inline-block;
+    position: relative;
+}
+@keyframes bounce {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -0.2em;
+    }
+    70% {
+        top: -0.3em;
+    }
+    100% {
+        top: 0;
+    }
+}
+.tv-copyright-box{
+    background: #D94C28;
+    padding: 15px 0;
+}
+.tv-copyright-box > p{
+    color: #fff;
+}
+.tv-copyright-box a{
+    font-size: 15px;
+    font-weight: 600;
+}
+.tv-copyright-box a:hover{
+    color: #111;
+}
+
+/*about Page
+------------------*/
+
+.tv-inner-banner{
+    background: rgba(0, 0, 0, 0) url("../images/inner-banner.jpg") no-repeat scroll center top / cover ;
+    min-height: 520px;
+    position: relative;
+}
+.tv-inner-page-logo {
+    left: 10%;
+    position: absolute;
+    color:#fff;
+}
+
+/*contact page
+------------------*/
+
+.tv-map iframe{
+    height: 300px;
+    width:100%;
+}
+.tv-contact-details h3, .tv-contact-address-details h3 {
+    color: #d89327;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+.form-control:focus{
+    border-color: #363636;
+}
+.tv-contact-address-list li {
+    line-height: 40px;
+}
+.tv-contact-address-details {
+    padding-left: 40px;
+}
+.tv-contact-address-list a, .tv-contact-address-list p{
+    font-size: 16px;
+}
+.tv-single-blog-title h2, .tv-single-blog-title h1 {
+    color: #363636;
+    font-size: 34px;
+}
+.tv-blog-post-date p, .tv-blog-post-date li{
+    display: inline;
+}
+.tv-blog-post-date {
+    font-size: 14px;
+    margin: 15px 0 20px;
+}
+.tv-blog-post-date > li {
+    margin-right: 15px;
+}
+.tv-blog-post-date a i {
+    color: #d89327;
+    margin-right: 3px;
+}
+.tv-blog-post-date a:hover{
+    color: #d89327;
+}
+.tv-single-blog-para blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #D94C28;
+}
+.tv-single-blog-para p {
+    font-size: 15px;
+    margin-block-end: 10px;
+    line-height: 22px;
+}
+.tv-single-blog-para blockquote p {
+    font-size: 14px;
+    font-weight: 600;
+}
+.tv-single-blog-para blockquote footer {
+    color: #D89327;
+}
+.tv-single-blog-img {
+    margin-bottom: 30px;
+}
+.tv-post-tags span, .tv-share-post-links span{
+    color: #D89327;
+    font-size: 22px;
+    font-family: "Baloo Thambi", sans-serif;
+    margin-right: 10px;
+}
+.tv-post-tags span a{
+    color:#111;
+    font-family: "Questrial", sans-serif;
+    font-size: 14px;
+}
+.tv-share-post-links{
+    margin-top: 15px;
+}
+.tv-share-post-links ul, .tv-share-post-links li {
+    display: inline;
+}
+.tv-share-post-links li a {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+}
+.tv-comment-list .media-heading {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.tv-comment-list .media, .tv-comment-all-list .media{
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+.tv-comments-list-box h2 {
+    margin-top: 60px;
+    color: #D94C28;
+    margin-bottom: 28px;
+}
+.tv-comment-all-list .media-heading small {
+    display: block;
+    color: #D89327;
+    margin: 5px 0 10px;
+}
+.tv-rightside-content{
+    background: #D89327;
+    padding: 30px;
+}
+.tv-post-categories h3, .tv-post-search h3, .tv-post-recent-posts h3, .tv-post-recent-Tag h3{
+    color: #fff;
+    margin-bottom: 18px;
+    font-size: 28px;
+    margin-top: 40px;
+}
+.tv-categories-list ul li a, .tv-recent-post ul li a{
+    color: #fff;
+    line-height: 30px;
+}
+.tv-categories-list ul li a::before, .tv-recent-post ul li a::before {
+    content: '\f054';
+    font-family: "Font Awesome 6 Free"; font-weight: 900;
+    font-size: 12px;
+    color:#111;
+    margin-right: 5px;
+}
+.tv-categories-list ul li a:hover, .tv-recent-post ul li a:hover{
+    color:#111;
+}
+.add-on .input-group-btn > .btn {
+    border-left-width:0;left:-2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* stop the glowing blue shadow */
+.add-on .form-control:focus {
+    box-shadow:none;
+    -webkit-box-shadow:none; 
+    border-color:#cccccc; 
+}
+#tv-srch-term{
+    background: transparent none repeat scroll 0% 0%;
+    color: rgb(255, 255, 255);
+    border-color: #fff;
+}
+.tv-search-btn .input-group-btn .btn {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+.tv-search-btn .form-control::-moz-placeholder {
+    color: #fff;
+    opacity: 1;
+}
+.tv-search-btn .form-control::-webkit-input-placeholder{
+    color: #fff;
+    opacity: 1;
+}
+.tv-recent-comment ul li a{
+    color: #fff;
+    line-height: 22px;
+}
+.tv-recent-tag ul li {
+    border-radius: 5px;
+    margin: 0 3px 5px 0;
+    padding: 8px;
+    text-transform: capitalize;
+    display: inline-block;
+    background: #111;
+}
+.tv-recent-tag ul li a {
+    color: #fff;
+    font-size: 12px;
+}
+
+/*
+Template Name: purrkatty
+File Name: responsive.css
+Author Name: ThemeVault
+Author URI: http://www.themevault.net/
+License URI: http://www.themevault.net/license/
+*/
+@media (max-width: 1199px){
+    .tv-tagline, .tv-comment-list {
+        margin-top: 30px;
+    }
+    .tv-tagline h2, .tv-tagline h1 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+}
+@media (max-width: 991px){
+    .tv-social-icon-list a {
+        font-size: 14px;
+        height: 35px;
+        line-height: 35px;
+        width: 35px;
+    }
+    .tv-social-icon {
+        padding: 20px 20px;
+        width: 350px;
+    }
+    .tv-logo-title {
+        width: 350px;
+        padding: 10px 60px 20px;
+    }
+    .tv-logo-img > img {
+        width: 18%;
+    }
+    .tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+        font-size: 38px;
+    }
+    .tv-tagline h2, .tv-tagline h1 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+    .tv-tagline, .tv-comment-list {
+        margin-top: 20px;
+    }
+    .tv-navbar-default .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 20px 35px;
+    }
+    .carousel.vertical .carousel-control.up{
+        top: 45%;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 53%;
+    }
+    .tv-welcome-box > h2 {
+        font-size: 36px;
+    }
+    .tv-welcome-box > p {
+        font-size: 14px;
+    }
+    .tv-welcome-banner {
+        min-height: 320px;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        font-size: 38px;
+        text-transform: uppercase;
+        color: #111;
+        margin-bottom: 60px;
+    }
+    .tv-block-heading > h2::before, .tv-block-heading > h1::before, .tv-block-heading > h2::after, .tv-block-heading > h1::after {
+        width: 3rem;
+    }
+    .tv-paddingTop-80 {
+        padding-top: 60px;
+    }
+    .tv-heading-img img {
+        left: -65px;
+        top: 9px;
+        width: 6%;
+    }
+    .tv-about-details, .tv-service-details, .tv-footer-logo{
+        text-align: center;
+    }
+    .tv-feature-box {
+        padding: 70px 0;
+        color: #fff;
+    }
+    .tv-feature-details > p {
+        font-size: 14px;
+    }
+    .tv-feature-box img {
+        height: 80px;
+        padding: 22px;
+        width: 80px;
+    }
+    .tv-service-list li:last-child {
+        margin-top: 30px;
+    }
+    .tv-service-details span {
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+        font-size: 16px;
+    }
+    .tv-service-details > h3 {
+        font-size: 24px;
+    }
+    .tv-service-details > p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .tv-hovereffect a {
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+    }
+    .tv-price-box h3 {
+        font-size: 23px;
+        margin: 20px 0 35px;
+    }
+    .tv-price-box h2 {
+        font-size: 30px;
+    }
+    .tv-blog-details h3 {
+        font-size: 20px;
+        line-height: 22px;
+        margin: 15px 0;
+    }
+    .tv-shop-box{
+        margin-bottom: 20px;
+    }
+    .tv-shop-detail span {
+        font-size: 28px;
+    }
+    .tv-shop-detail h3 {
+        font-size: 20px;
+    }
+    .tv-shop-detail span {
+        font-size: 28px;
+        margin: 10px 0 0px;
+    }
+    .tv-footer-logo .tv-logo-img > img {
+        width: 8%;
+        left: -87px;
+    }
+    .tv-social-link-box {
+        padding: 0px 0 26px;
+    }
+    .tv-inner-banner {
+        min-height: 350px;
+    }
+    .navbar {
+        margin-top: -60px;
+    }
+    .tv-single-blog-title h2, .tv-single-blog-title h1 {
+        font-size: 28px;
+    }
+    .tv-blog-post-date li {
+        font-size: 12px;
+    }
+    .tv-single-blog-para p {
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .tv-comments-list-box h2 {
+        font-size: 26px;
+    }
+    .tv-post-categories h3, .tv-post-search h3, .tv-post-recent-posts h3, .tv-post-recent-Tag h3 {
+        font-size: 22px;
+        margin-top: 30px;
+    }
+    .tv-categories-list ul li a, .tv-recent-post ul li a {
+        font-size: 12px;
+        line-height: 26px;
+    }
+    .tv-recent-tag ul li a {
+        font-size: 11px;
+    }
+    .tv-contact-details h3, .tv-contact-address-details h3 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .tv-contact-address-list li {
+        line-height: 32px;
+    }
+    .tv-contact-address-list a, .tv-contact-address-list p {
+        font-size: 15px;
+    }
+    .tv-site-btn{
+        font-size: 14px;
+    }
+    .tv-social-links a {
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+    }
+    .tv-contact-link a, .tv-contact-link p {
+        font-size: 15px;
+    }
+}
+@media (max-width: 767px){
+    .tv-social-icon-list a {
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+    }
+    .tv-social-icon {
+        padding: 10px 20px;
+    }
+    .navbar-toggler {
+        border: 1px solid #D94C28 !important;
+    }
+    .tv-navbar-default .navbar-toggler .icon-bar {
+        background-color: #111;
+    }
+    .tv-navbar-default .navbar-toggler:focus, .tv-navbar-default .navbar-toggler:hover {
+        background-color: #D94C28;
+    }
+    .tv-navbar-default .navbar-collapse, .tv-navbar-default .navbar-form{
+        border: none;
+        box-shadow: none;
+    }
+    .tv-navbar-default .navbar-nav .nav-link, .tv-welcome-box{
+        text-align: center;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 54%;
+    }
+    .carousel.vertical .carousel-control.up {
+        top: 44%;
+    }
+    .tv-feature-details{
+        margin-bottom: 20px;
+    }
+    .tv-about-details > p {
+        font-size: 14px;
+        line-height: 25px;
+        margin-bottom: 20px;
+    }
+    .tv-block-heading > h2::before, .tv-block-heading > h1::before, .tv-block-heading > h2::after, .tv-block-heading > h1::after {
+        margin: -0.5rem 1rem;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        font-size: 34px;
+        margin-bottom: 50px;
+    }
+    .tv-paddingTop-80 {
+        padding-top: 50px;
+    }
+    .tv-about-details span {
+        font-size: 20px;
+    }
+    .tv-feature-details h3 {
+        margin: 10px 0 5px;
+    }
+    .tv-feature-box {
+        padding: 40px 0;
+    }
+    .tv-service-img img {
+        width: 40%;
+    }
+    .tv-service-details > h3 {
+        font-size: 20px;
+    }
+    #myCarousel {
+        padding: 50px 0;
+    }
+    .tv-testimonial-banner {
+        min-height: 400px;
+    }
+    .tv-client-details p {
+        font-size: 14px;
+    }
+    .tv-blog-img img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .tv-inner-banner {
+        min-height: 280px;
+    }
+    .tv-rightside-content {
+        margin-top: 40px;
+    }
+    .tv-contact-address-details {
+        padding-left: 0px;
+        margin-top: 40px;
+    }
+}
+@media (max-width: 500px){
+    .tv-social-icon {
+        padding: 10px 20px;
+        width: 280px;
+    }
+    .tv-logo-title {
+        width: 280px;
+        padding: 0px 40px 10px;
+    }
+    .tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+        font-size: 32px;
+    }
+    .tv-logo-img > img {
+        width: 16%;
+    }
+    .tv-tagline, .tv-comment-list {
+        margin-top: 15px;
+    }
+    .tv-tagline h2, .tv-tagline h1 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .carousel.vertical .carousel-control.up {
+        top: 42%;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 56%;
+    }
+    .tv-welcome-box > h2 {
+        font-size: 30px;
+    }
+    .tv-welcome-banner {
+        min-height: 280px;
+    }
+    .tv-welcome-box {
+        padding: 30px 0;
+    }
+    .tv-inner-banner {
+        min-height: 250px;
+    }
+}
+@media (max-width: 400px){
+    .width-100{
+        width:100%;
+    }
+    .tv-social-icon-list {
+        text-align: center;
+    }
+    .tv-social-icon {
+        width: 200px;
+    }
+    .tv-logo-img > img {
+        top: 7px;
+        width: 14%;
+    }
+    .tv-logo-title {
+        width: 200px;
+        padding: 0px 20px 10px;
+    }
+    .tv-logo-title p{
+        font-size: 12px;
+    }
+    .tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+        font-size: 26px;
+    }
+    .tv-tagline{
+        display: none;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 45%;
+    }
+    .carousel.vertical .carousel-control.up {
+        top: 26%;
+    }
+    #carousel-example-vertical .carousel-caption {
+        left: 6%;
+    }
+    .tv-navbar-default .navbar-nav .nav-link {
+        padding: 15px 35px;
+    }
+    .tv-welcome-box > h2 {
+        font-size: 24px;
+    }
+    .tv-welcome-box > p {
+        font-size: 13px;
+        margin: 5px 0 15px;
+    }
+    .tv-site-btn {
+        font-size: 13px;
+        padding: 10px 22px;
+    }
+    .tv-welcome-banner {
+        min-height: 245px;
+    }
+    .tv-heading-img img {
+        left: -52px;
+        top: 6px;
+        width: 8%;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        font-size: 26px;
+    }
+    .tv-block-heading > h2::before, .tv-block-heading > h1::before, .tv-block-heading > h2::after, .tv-block-heading > h1::after {
+        width: 2rem;
+        margin: -0.7rem 1rem;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        margin-bottom: 40px;
+    }
+    .tv-paddingTop-80 {
+        padding-top: 40px;
+    }
+    .tv-about-details span {
+        font-size: 18px;
+    }
+    .tv-feature-details h3 {
+        font-size: 20px;
+    }
+    .tv-feature-banner {
+        background: rgba(0, 0, 0, 0) url("../images/features.jpg") no-repeat scroll 62% top / cover;
+    }
+    .tv-service-img img {
+        width: 50%;
+    }
+    .tv-client-details p {
+        font-size: 12px;
+    }
+    .tv-client-details h3 {
+        margin: 8px 0;
+        font-size: 20px;
+    }
+    .tv-shop-detail span {
+        font-size: 25px;
+        margin: 5px 0 0px;
+    }
+    .tv-footer-logo .tv-logo-img > img {
+        width: 11%;
+        left: -63px;
+    }
+    .tv-contact-link a, .tv-contact-link p {
+        font-size: 13px;
+    }
+    .tv-social-link-box h3 {
+        font-size: 22px;
+    }
+    .tv-social-links a {
+        font-size: 12px;
+        height: 35px;
+        line-height: 37px;
+        width: 35px;
+    }
+    .tv-copyright-box a {
+        font-size: 14px;
+    }
+    .tv-copyright-box > p {
+        font-size: 12px;
+    }
+    .tv-inner-banner {
+        min-height: 220px;
+    }
+    .tv-single-blog-details {
+        text-align: center;
+    }
+    .tv-single-blog-title h2, .tv-single-blog-title h1 {
+    font-size: 24px;
+}
+.tv-single-blog-para blockquote{
+    text-align: left;
+}
+}
+
+/* ==========================================================================
+   PurrKatty — template-specific Bootstrap 5 shims.
+
+   The SHARED Bootstrap 3 -> 5 compatibility layer lives in
+   web/scripts/upgrade-qa/bs3-compat.css and is linked BEFORE style.css.
+   Only rules peculiar to THIS template belong here.
+   ========================================================================== */
+
+/* --- The five menu colours -------------------------------------------------------
+   v1 set them inline on every page's five links. */
+.tv-nav-main { background: #8ba72e; }
+.tv-nav-about { background: #ba2257; }
+.tv-nav-gallery { background: #5a4ca6; }
+.tv-nav-blog { background: #d89327; }
+.tv-nav-contact { background: #d94c28; }
+
+/* --- The first slide's tagline was inline `color:#111` ------------------------------ */
+.tv-tagline .tv-tagline-dark { color: #111; }
+
+/* --- Back to top ---------------------------------------------------------------
+   v1 hid it with an inline `style="display:none"` and animated it with
+   jQuery's fadeIn. v2 toggles a class instead. It is a <button> now; v1's
+   own `.tv-back-to-top` rule keeps the look. */
+button.tv-back-to-top {
+    display: none;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease 0s;
+}
+button.tv-back-to-top.is-visible { display: block; opacity: 1; }
+
+/* --- The comment avatars were inline 100x100 ----------------------------------------- */
+.tv-avatar { width: 100px; height: 100px; object-fit: cover; }
+
+/* --- Lightbox (main.js builds it in place of lightbox.js) ---------------------- */
+.tv-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1090;
+    background: rgba(0, 0, 0, .9);
+    align-items: center;
+    justify-content: center;
+}
+.tv-lightbox.is-open { display: flex; }
+.tv-lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .5);
+}
+.tv-lightbox button {
+    position: absolute;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 40px;
+    line-height: 1;
+    padding: 10px 18px;
+    cursor: pointer;
+}
+.tv-lightbox button:hover,
+.tv-lightbox button:focus-visible { color: var(--tv-amber); }
+.tv-lb-close { top: 10px; right: 16px; font-size: 48px; }
+.tv-lb-prev { left: 10px; top: 50%; transform: translateY(-50%); }
+.tv-lb-next { right: 10px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 575.98px) {
+    .tv-lightbox button { font-size: 30px; }
+    .tv-lb-close { font-size: 36px; }
+}
+
+/* --- Forms ----------------------------------------------------------------------
+   A static template posts nowhere; main.js validates and shows the note. */
+.tv-form-note { display: block; margin: 12px 0 0; font-size: 14px; color: var(--tv-orange); }
+.tv-form-note:focus { outline: none; }
+.form-control.is-invalid, input.is-invalid, select.is-invalid, textarea.is-invalid { border-color: #d9534f !important; }
+/* the Send Message / Post Comment pills were <a>s; as <button>s the browser
+   chrome comes off — v1's .tv-site-btn rule is the look */
+button.tv-site-btn { border: 0; }
+
+/* --- The vertical banner carousel ---------------------------------------------------
+   v1 gave the slide `width: auto` — harmless on Bootstrap 3's block slide.
+   Bootstrap 5's slide is a float with `margin-right: -100%`, and `width:
+   auto` on a float is shrink-to-fit: the banner photo grew to twice the
+   viewport on a phone. The slide is the viewport's width, as it was. */
+.carousel.vertical .carousel-inner > .carousel-item { width: 100%; }
+
+/* --- The blog sidebar's search button ---------------------------------------------
+   Bootstrap 3's .btn-default (white, grey border); Bootstrap 5 has no such
+   class and the template does not style it. */
+.tv-search-btn .btn-default { color: #333; background-color: #fff; border: 1px solid #ccc; }
+.tv-search-btn .btn-default:hover { background-color: #e6e6e6; border-color: #adadad; }
+
+/* --- The five new pages (owner's picks 2026-09-15) ---------------------------------
+   Services, booking, shop, product, 404. Built from v1's own blocks; only
+   what those blocks do not cover is here. */
+.tv-lead-text { color: #363636; font-size: 16px; line-height: 28px; margin-bottom: 40px; text-align: center; }
+.tv-lead-text a { color: var(--tv-orange); text-decoration: underline; }
+/* services: a card per service, the round orange icon from v1's service list */
+.tv-services-grid > [class*="col-"] { margin-bottom: 30px; display: flex; }
+.tv-service-card { display: flex; gap: 25px; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 20px 2px rgba(0, 0, 0, .08); width: 100%; }
+.tv-service-icon { flex: 0 0 auto; background: var(--tv-orange); border-radius: 50%; color: #fff; display: inline-block; width: 60px; height: 60px; line-height: 60px; text-align: center; font-size: 24px; }
+.tv-service-body h3 { color: #363636; font-size: 26px; margin-bottom: 10px; }
+.tv-service-body p { color: #363636; font-size: 15px; line-height: 26px; margin-bottom: 10px; }
+.tv-service-meta { color: var(--tv-amber); font-size: 18px; font-family: var(--tv-font-head); }
+.tv-services-cta h3 { color: var(--tv-amber); font-size: 30px; margin-bottom: 10px; }
+.tv-services-cta p { color: #363636; font-size: 16px; line-height: 28px; max-width: 640px; margin: 0 auto 10px; }
+@media (max-width: 575.98px) { .tv-service-card { flex-direction: column; gap: 15px; } }
+/* booking */
+.tv-booking-form .form-group { margin-bottom: 20px; }
+.tv-booking-form .form-control { height: 45px; }
+.tv-booking-form textarea.form-control { height: 120px; }
+.tv-booking-form select.form-control { appearance: auto; }
+.tv-steps { padding-left: 0; list-style: none; counter-reset: step; margin-bottom: 40px; }
+.tv-steps li { position: relative; padding-left: 55px; margin-bottom: 20px; color: #363636; font-size: 15px; line-height: 26px; counter-increment: step; }
+.tv-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 40px; height: 40px; line-height: 40px; text-align: center; border-radius: 50%; background: var(--tv-orange); color: #fff; font-family: var(--tv-font-head); font-size: 18px; }
+.tv-booking-contact { text-align: left; }
+.tv-booking-contact li { margin-bottom: 12px; font-size: 16px; color: #363636; }
+.tv-booking-contact li a, .tv-booking-contact li p { color: #363636; }
+.tv-booking-contact i { color: var(--tv-orange); width: 24px; }
+@media (max-width: 767.98px) { .tv-booking-aside { margin-top: 60px; } }
+/* shop: one product per row on a phone (owner, 2026-09-15: "shop page needs
+   to show single product in mobile" — v1 went two-up between 400 and 767px),
+   the filter buttons and the tiles' links */
+.tv-shop-filter { text-align: center; margin-bottom: 40px; }
+.tv-shop-filter li { display: inline-block; margin: 0 4px 10px; }
+.tv-shop-filter .tv-site-btn { padding: 8px 22px; font-size: 14px; background: #fff; color: #363636; box-shadow: inset 0 0 0 2px #ddd; }
+.tv-shop-filter .tv-site-btn.active, .tv-shop-filter .tv-site-btn:hover { background: var(--tv-orange); color: #fff; box-shadow: 9px 0 0 0 var(--tv-amber) inset; }
+.tv-shop-grid > [class*="col-"] { margin-bottom: 30px; }
+.tv-shop-grid > .is-filtered-out { display: none; }
+.tv-shop-detail h3 a { color: inherit; }
+.tv-shop-detail h3 a:hover { color: var(--tv-orange); }
+/* product */
+.tv-product-cat a { color: var(--tv-amber); font-family: var(--tv-font-head); font-size: 16px; text-transform: uppercase; letter-spacing: 2px; }
+.tv-product-price { font-family: var(--tv-font-head); font-size: 40px; color: var(--tv-orange); margin: 5px 0 15px; }
+.tv-product-price small { font-size: 16px; color: #363636; font-family: var(--tv-font-body); }
+.tv-product-summary > p { color: #363636; font-size: 16px; line-height: 28px; margin-bottom: 20px; }
+.tv-product-facts { margin: 0 0 25px; padding: 0; }
+.tv-product-facts li { color: #363636; font-size: 15px; line-height: 26px; padding-left: 20px; position: relative; }
+.tv-product-facts li::before { content: ""; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--tv-amber); }
+.tv-order-form { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 15px; margin-bottom: 15px; }
+.tv-order-form .form-label { margin: 0; font-size: 16px; }
+.tv-order-form .form-control { width: 80px; height: 45px; }
+.tv-order-form .tv-site-btn { margin-top: 0; }
+.tv-order-form .tv-form-note { flex-basis: 100%; }
+.tv-product-note { color: #363636; font-size: 14px; }
+.tv-product-note i { color: var(--tv-orange); margin-right: 6px; }
+.tv-related-title { color: var(--tv-amber); font-size: 30px; margin-bottom: 30px; text-align: center; }
+@media (max-width: 767.98px) { .tv-product-summary { margin-top: 40px; } }
+/* 404 */
+.tv-404 { padding-bottom: 20px; }
+.tv-404-code { font-family: var(--tv-font-head); font-size: 8rem; line-height: 1; color: var(--tv-orange); margin-bottom: 20px; }
+.tv-404-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+@media (max-width: 575.98px) { .tv-404-code { font-size: 5rem; } }
+
+/* --- The testimonial slider on a phone -----------------------------------------------
+   v1 (and the first port) boxed the quote in a fixed 300px `.carousel-inner`
+   with the caption positioned inside it; below 768 the photo, name and
+   quote run taller than the box and the last lines were cut off (owner,
+   2026-09-15: "in mobile testimonial is not visible fully"). The caption
+   sits in normal flow on a phone and the box grows with it; the quote's
+   70% column widens to 90% for the narrow screen. */
+@media (max-width: 767.98px) {
+    #myCarousel .carousel-inner { height: auto; min-height: 300px; }
+    #myCarousel .carousel-item { min-height: 300px; }
+    #myCarousel .carousel-caption { position: relative; top: auto; transform: none; width: 84%; padding: 30px 0; }
+    .tv-client-details p { width: 90%; }
+}
+/* ==========================================================================
+   4. Components - ported from v1's style.css, with the Bootstrap 3 selectors
+   rewritten for Bootstrap 5. See _port-css.mjs for the exact mapping.
+
+   ORDER MATTERS, and it is taken from the <link> tags rather than chosen here.
+   Where two of a template's stylesheets set the same property at the same
+   specificity, the later one wins — so reordering them silently changes the
+   design. AquaLand loaded scrolling-nav.css before style.css; appending it
+   after instead turned ".navbar{padding:10px}" into "padding:20px 0" and added
+   20px to the menu bar at every desktop width.
+
+   The responsive stylesheet is simply the last link: v1's queries are
+   max-width based and land on breakpoints Bootstrap 5 shares, so they carry
+   across unchanged.
+   ========================================================================== */
+/*
+Template Name: purrkatty
+File Name: style.css
+Author Name: ThemeVault
+Author URI: http://www.themevault.net/
+License URI: http://www.themevault.net/license/
+*/
+
+html {
+}
+html, body {width:100%; padding:0; margin:0; color:#111;}
+a, button {
+    text-decoration: none;
+    cursor: pointer;
+}
+a {
+    color: inherit;
+}
+a:hover,
+a:active,
+a:focus {
+    color: inherit;
+    outline: none !important;
+    text-decoration: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    list-style-type: none;
+}
+.form-control::-webkit-input-placeholder {
+    opacity: 1;
+}
+.placeholder-fix:focus::-webkit-input-placeholder  {color:transparent !important; }
+.placeholder-fix:focus::-moz-placeholder   {color:transparent !important;}
+.placeholder-fix:-moz-placeholder   {color:transparent !important;}
+textarea:focus,textArea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+    border-color: none;
+    box-shadow: none !important;
+    outline: 0 none;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button:active,
+button:focus {
+    outline: none !important;
+    text-decoration: none;
+}
+/*typography
+----------------------*/
+
+body {
+    color: #000;
+    font-family: "Questrial", sans-serif;
+    background-color: #fff;
+    letter-spacing: 1px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Baloo Thambi", sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0
+}
+
+/*common
+----------------------*/
+
+.tv-bgclr-black{
+    background-color: #111;
+}
+.tv-paddingTop-80{
+    padding-top: 80px;
+}
+.tv-padding0{
+    padding: 0;
+}
+
+/* slider
+----------------------*/
+
+.carousel.vertical .carousel-inner {
+    height: 100%;
+    width: auto;
+}
+.carousel.vertical .carousel-inner > .carousel-item {
+    width: auto;
+    -webkit-transition: 0.6s ease-in-out top;
+    transition: 0.6s ease-in-out top;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel.vertical .carousel-inner > .carousel-item {
+        -webkit-transition: 0.6s ease-in-out;
+        transition: 0.6s ease-in-out;
+    }
+    .carousel.vertical .carousel-inner > .carousel-item-next, .carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-end {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        top: 0;
+    }
+    .carousel.vertical .carousel-inner > .carousel-item-prev, .carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-start {
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+        top: 0;
+    }
+    .carousel.vertical .carousel-inner > .carousel-item-next.carousel-item-start, .carousel.vertical .carousel-inner > .carousel-item-prev.carousel-item-end, .carousel.vertical .carousel-inner > .carousel-item.active {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        top: 0;
+    }
+}
+.carousel.vertical .carousel-inner > .carousel-item.active,
+.carousel.vertical .carousel-inner > .carousel-item-next,
+.carousel.vertical .carousel-inner > .carousel-item-prev {
+    display: block;
+}
+.carousel.vertical .carousel-inner > .carousel-item.active {
+    top: 0;
+}
+.carousel.vertical .carousel-inner > .carousel-item-next,
+.carousel.vertical .carousel-inner > .carousel-item-prev {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item-next {
+    top: 100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item-prev {
+    top: -100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item-next.carousel-item-start,
+.carousel.vertical .carousel-inner > .carousel-item-prev.carousel-item-end {
+    top: 0;
+}
+.carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-start {
+    top: -100%;
+}
+.carousel.vertical .carousel-inner > .carousel-item.active.carousel-item-end {
+    top: 100%;
+}
+.carousel.vertical .carousel-control {
+    left: auto;
+    width: 50px;
+}
+.carousel.vertical .carousel-control.up, .carousel.vertical .carousel-control.down {
+    background-color: #111;
+    height: 32px;
+    opacity: 1;
+    right: 0;
+    top: 47%;
+}
+.carousel.vertical .carousel-control.down {
+    top: 53%;
+}
+.carousel.vertical .carousel-control.up:hover, .carousel.vertical .carousel-control.down:hover{
+    background-color: #fff;
+    color:#111;
+}
+.carousel.vertical .carousel-control i {
+    line-height: 32px;
+}
+#carousel-example-vertical .carousel-caption{
+    left: 10%;
+    right: auto;
+    top:0;
+    text-align: left;
+    padding: 0px;
+}
+.tv-social-icon{
+    width: 370px;
+    background: #000;
+    padding: 20px;
+}
+.tv-logo-title{
+    width: 370px;
+    background: rgba(32, 32, 32, 0.9);
+    padding: 30px 50px 50px;
+}
+.tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+    clear: both;
+    font-size: 46px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:#fff;
+
+}
+.tv-logo-img > img{
+    position: relative;
+    top: 11px;
+    width: 24%;
+}
+.tv-logo-title p, .tv-feature-details, .tv-price-box, .tv-shop-detail, .tv-footer-logo p, .tv-contact-link, .tv-social-link-box, .tv-copyright-box > p, .tv-block-heading{
+    text-align: center;
+}
+.tv-social-icon-list a{
+    background: #363636;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-shadow: none;
+    width: 40px;
+    margin-left:3px; 
+}
+.tv-social-icon-list a:hover{
+    background: #fff;
+    color: #111;
+}
+.tv-social-icon-list{
+    text-align: right;
+}
+.tv-social-icon-list li{
+    display: inline;
+}
+.tv-social-icon{
+    background: #111;
+    padding: 30px 20px;
+    width: 370px;
+}
+.tv-tagline, .tv-comment-list {
+    margin-top: 50px;
+}
+.tv-tagline h2, .tv-tagline h1 {
+    font-size: 36px;
+    line-height: 46px;
+}
+
+/*navbar
+------------------*/
+
+.tv-navbar-default {
+    background-color: transparent;
+    border: medium none;
+}
+.tv-navbar-default .navbar-nav .nav-link {
+    color: #fff;
+    padding: 20px 35px;
+}
+.tv-navbar-default .navbar-nav .nav-link {
+    color: #fff;
+    font-size: 16px;
+    padding: 25px 45px;
+}
+.tv-navbar-default .navbar-nav .nav-link.active, .tv-navbar-default .navbar-nav .nav-link.active:focus, .tv-navbar-default .navbar-nav .nav-link.active:hover{
+    color:#fff;
+}
+.tv-navbar-default .navbar-nav .nav-link:hover{
+    background: #111 !important;
+    color:#fff;
+}
+.navbar {
+    border: 1px solid transparent;
+    margin-bottom: 0;
+    margin-top: -70px;
+    min-height: 50px;
+    position: relative;
+    border: none;
+}
+.tv-welcome-banner{
+    background: rgba(0, 0, 0, 0) url("../images/welcome-banner.jpg") no-repeat scroll center top / cover ;
+    min-height: 365px;
+    position: relative;
+}
+.tv-welcome-box {
+    color: #fff;
+    padding: 52px 0;
+}
+.tv-welcome-box > h2 {
+    font-size: 60px;
+}
+.tv-welcome-box > p{
+    color: #a3a3a3;
+    display: block;
+    font-size: 16px;
+    margin: 5px 0 20px;
+    max-height: 7.1em;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
+.tv-site-btn {
+    background: #d94c28;
+    border: medium none;
+    border-radius: 20px;
+    box-shadow: 9px 0 0 0 #d89327 inset;
+    color: #fff;
+    display: inline-block;
+    font-family: "Baloo Thambi",sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    margin-top: 10px;
+    padding: 12px 30px;
+    transition: all 0.3s ease-in-out 0s;
+}
+.tv-site-btn:hover{
+    background: #111;
+    box-shadow: none;
+    color:#fff;
+}
+.tv-block-heading > h2, .tv-block-heading > h1 {
+    font-size: 48px;
+    text-transform: uppercase;
+    color:#111;
+    margin-bottom: 80px;
+}
+.tv-block-heading > h2::before, .tv-block-heading > h1::before,
+.tv-block-heading > h2::after, .tv-block-heading > h1::after {
+    display: inline-block;
+    content: "";
+    border-top: .3rem solid #363636;
+    width: 4rem;
+    margin: -0.2rem 1rem;
+    transform: translateY(-1rem);
+}
+.tv-heading-img img {
+    left: -85px;
+    position: relative;
+    top: 12px;
+    width: 4%;
+}
+.tv-about-details > p {
+    color: #363636;
+    font-size: 16px;
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+.tv-about-details span{
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 35px;
+    color:#D89327;
+}
+.tv-about-details span a{
+    color: #363636;
+}
+.tv-feature-banner{
+    background: rgba(0, 0, 0, 0) url("../images/features.jpg") no-repeat scroll center top / cover ;
+    min-height: 384px;
+    position: relative;
+}
+.tv-feature-box {
+    padding: 90px 0;
+    color: #fff;
+    display: inline-block;
+}
+.tv-feature-box img {
+    background: #111;
+    border-radius: 20px;
+    height: 90px;
+    padding: 22px;
+    width: 90px;
+}
+.tv-feature-details h3 { 
+    margin: 20px 0 10px;
+}
+.tv-feature-details > p {
+    font-size: 16px;
+}
+.tv-feature-img img:hover, .tv-share-post-links li a:hover, .tv-recent-tag ul li:hover, .tv-back-to-top:hover{
+    background: #d94c28;
+}
+.tv-service-details > h3 {
+    color: #363636;
+    font-size: 26px;
+}
+.tv-service-details span {
+    background: #d94c28 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+    font-size: 22px;
+}
+.tv-service-details > p {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 14px;
+}
+.tv-service-list li:last-child{
+    margin-top: 50px;
+}
+.tv-service-img img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+.tv-hovereffect {
+    width: 100%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+}
+.tv-hovereffect .tv-overlay {
+    position: absolute;
+    overflow: hidden;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0,1);
+    -ms-transform: scale(0,1);
+    transform: scale(0,1);
+}
+.tv-hovereffect:hover .tv-overlay {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.tv-hovereffect img {
+    display: block;
+    position: relative;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.tv-hovereffect:hover img {
+    filter: brightness(0.6);
+    -webkit-filter: brightness(0.6);
+}
+.tv-hovereffect a {
+    background: #111;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    transition: opacity 0.35s ease 0s, transform 0.35s ease 0s;
+    width: 50px;
+}
+.tv-hovereffect a:hover{
+    background:#D94C28;
+}
+.tv-link-icon {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.tv-hovereffect:hover a{
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.tv-link-icon li{
+    display: inline;
+}
+.tv-price-img img {
+    margin-left: auto;
+    margin-right: auto;
+}
+.tv-price-box {
+    padding: 20px;
+    box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.2);
+}
+.tv-price-box:hover{
+    background: #8BA72E; 
+}
+.tv-price-box h3 {
+    color: #d89327;
+    font-size: 30px;
+    margin: 25px 0 40px;
+    position: relative;
+}
+.tv-price-box h3::before {
+    bottom: -25px;
+    color: #d94c28;
+    content: ". . .";
+    font-size: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+.tv-price-box h2 {
+    color: #ba2257;
+    font-size: 40px;
+}
+.tv-plan-features {
+    margin: 15px 0;
+}
+.tv-plan-features li {
+    color: #363636;
+    line-height: 28px;
+}
+.tv-price-box:hover h3, .tv-price-box:hover h2, .tv-price-box:hover .tv-plan-features li, .tv-blog-box:hover .tv-blog-details h3, .tv-blog-box:hover .tv-blog-details span{
+    color:#fff;
+}
+.tv-testimonial-banner{
+    background: rgba(0, 0, 0, 0) url("../images/testimonial.jpg") no-repeat scroll center top / cover ;
+    min-height: 530px;
+    position: relative;
+}
+#myCarousel {
+    background: transparent none repeat scroll 0 0;
+    padding: 100px 0;
+}
+#myCarousel .carousel-inner {
+    background: rgba(255, 255, 255, 0.5);
+    height: 300px;
+}
+#myCarousel .carousel-control.left, #myCarousel .carousel-control.right{
+    background-image: none;
+}
+#myCarousel .carousel-control{
+    opacity: 1;
+    top: 50%;
+}
+#myCarousel .carousel-control i {
+    background: #111;
+    color: #fff;
+    font-size: 20px;
+    height: 32px;
+    line-height: 32px;
+    text-shadow: none;
+    width: 50px;
+}
+#myCarousel .carousel-control i:hover{
+    background-color: #D94C28;
+    color:#111;
+}
+#myCarousel .carousel-caption {
+    bottom: auto;
+    left: 0;
+    padding: 0;
+    right: 0;
+    top: 12%;
+    transform: translate(0%, 12%);
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tv-client-img img {
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
+.tv-client-details h3 {
+    color: #d94c28;
+    margin: 15px 0;
+    text-shadow: none;
+}
+.tv-client-details p {
+    color: #363636;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    text-shadow: none;
+}
+.tv-blog-details span{
+    color: #787878;
+}
+.tv-blog-details {
+    padding: 20px;
+    text-align: center;
+}
+.tv-blog-details h3 {
+    color: #d89327;
+    font-size: 22px;
+    line-height: 24px;
+    margin: 20px 0;
+}
+.tv-blog-box:hover .tv-blog-details {
+    background: #8ba72e;
+}
+.tv-instagram-img .col-lg-2 {
+    padding: 0;
+    width: 11.1%;
+}
+.insta-image {
+    position: relative;
+}
+.insta-image img {
+    width: 100%;
+    position: relative;
+}
+#instafeed .likes {
+    background: #D94C28;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    font-size: 1em;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+    top: 0;
+    transition: opacity 100ms ease 0s;
+    width: 100%;
+    font-size: 16px;
+}
+#instafeed a:hover .likes {
+    opacity: 1;
+}
+.tv-shop-box {
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2);
+    padding: 20px 20px 30px;
+}
+.tv-shop-img img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+.tv-shop-detail h3 {
+    color: #d89327;
+    font-size: 22px;
+}
+.tv-shop-detail span {
+    display: block;
+    font-size: 32px;
+    margin: 20px 0 10px;
+}
+.tv-footer-content{
+    background: #363636;
+    padding: 40px 0;
+}
+.tv-footer-logo{
+    color: #fff;
+}
+.tv-contact-link a, .tv-contact-link p {
+    color: #fff;
+    font-size: 17px;
+}
+.tv-contact-link a:hover, .tv-contact-address-list a:hover{
+    color: #d94c28;
+}
+.tv-contact-link li {
+    line-height: 30px;
+}
+.tv-contact-link a i, .tv-contact-link p i, .tv-contact-address-list li i {
+    color: #d94c28;
+    margin-right: 5px;
+}
+.tv-contact-link {
+    padding: 36px 0;
+}
+.tv-social-links a {
+    background: #d94c28 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+}
+.tv-social-links a:hover{
+    background: #111;
+}
+.tv-social-links li {
+    display: inline;
+}
+.tv-social-links{
+    margin-top: 20px;
+}
+.tv-social-link-box h3 {
+    color: #fff;
+    text-transform: uppercase;
+}
+.tv-social-link-box {
+    padding: 32px 0;
+}
+.tv-back-to-top {
+    background: #fff;
+    bottom: 10px;
+    color: #111;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 28px;
+    height: 45px;
+    line-height: 50px;
+    outline: medium none;
+    position: fixed;
+    right: 15px;
+    text-align: center;
+    text-decoration: none;
+    width: 35px;
+    z-index: 9999;
+}
+.tv-bounce {
+    animation: 2s linear 0s normal none infinite running bounce;
+    display: inline-block;
+    position: relative;
+}
+@keyframes bounce {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -0.2em;
+    }
+    70% {
+        top: -0.3em;
+    }
+    100% {
+        top: 0;
+    }
+}
+.tv-copyright-box{
+    background: #D94C28;
+    padding: 15px 0;
+}
+.tv-copyright-box > p{
+    color: #fff;
+}
+.tv-copyright-box a{
+    font-size: 15px;
+    font-weight: 600;
+}
+.tv-copyright-box a:hover{
+    color: #111;
+}
+
+/*about Page
+------------------*/
+
+.tv-inner-banner{
+    background: rgba(0, 0, 0, 0) url("../images/inner-banner.jpg") no-repeat scroll center top / cover ;
+    min-height: 520px;
+    position: relative;
+}
+.tv-inner-page-logo {
+    left: 10%;
+    position: absolute;
+    color:#fff;
+}
+
+/*contact page
+------------------*/
+
+.tv-map iframe{
+    height: 300px;
+    width:100%;
+}
+.tv-contact-details h3, .tv-contact-address-details h3 {
+    color: #d89327;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+.form-control:focus{
+    border-color: #363636;
+}
+.tv-contact-address-list li {
+    line-height: 40px;
+}
+.tv-contact-address-details {
+    padding-left: 40px;
+}
+.tv-contact-address-list a, .tv-contact-address-list p{
+    font-size: 16px;
+}
+.tv-single-blog-title h2, .tv-single-blog-title h1 {
+    color: #363636;
+    font-size: 34px;
+}
+.tv-blog-post-date p, .tv-blog-post-date li{
+    display: inline;
+}
+.tv-blog-post-date {
+    font-size: 14px;
+    margin: 15px 0 20px;
+}
+.tv-blog-post-date > li {
+    margin-right: 15px;
+}
+.tv-blog-post-date a i {
+    color: #d89327;
+    margin-right: 3px;
+}
+.tv-blog-post-date a:hover{
+    color: #d89327;
+}
+.tv-single-blog-para blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #D94C28;
+}
+.tv-single-blog-para p {
+    font-size: 15px;
+    margin-block-end: 10px;
+    line-height: 22px;
+}
+.tv-single-blog-para blockquote p {
+    font-size: 14px;
+    font-weight: 600;
+}
+.tv-single-blog-para blockquote footer {
+    color: #D89327;
+}
+.tv-single-blog-img {
+    margin-bottom: 30px;
+}
+.tv-post-tags span, .tv-share-post-links span{
+    color: #D89327;
+    font-size: 22px;
+    font-family: "Baloo Thambi", sans-serif;
+    margin-right: 10px;
+}
+.tv-post-tags span a{
+    color:#111;
+    font-family: "Questrial", sans-serif;
+    font-size: 14px;
+}
+.tv-share-post-links{
+    margin-top: 15px;
+}
+.tv-share-post-links ul, .tv-share-post-links li {
+    display: inline;
+}
+.tv-share-post-links li a {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+}
+.tv-comment-list .media-heading {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.tv-comment-list .media, .tv-comment-all-list .media{
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+.tv-comments-list-box h2 {
+    margin-top: 60px;
+    color: #D94C28;
+    margin-bottom: 28px;
+}
+.tv-comment-all-list .media-heading small {
+    display: block;
+    color: #D89327;
+    margin: 5px 0 10px;
+}
+.tv-rightside-content{
+    background: #D89327;
+    padding: 30px;
+}
+.tv-post-categories h3, .tv-post-search h3, .tv-post-recent-posts h3, .tv-post-recent-Tag h3{
+    color: #fff;
+    margin-bottom: 18px;
+    font-size: 28px;
+    margin-top: 40px;
+}
+.tv-categories-list ul li a, .tv-recent-post ul li a{
+    color: #fff;
+    line-height: 30px;
+}
+.tv-categories-list ul li a::before, .tv-recent-post ul li a::before {
+    content: '\f054';
+    font-family: "Font Awesome 6 Free"; font-weight: 900;
+    font-size: 12px;
+    color:#111;
+    margin-right: 5px;
+}
+.tv-categories-list ul li a:hover, .tv-recent-post ul li a:hover{
+    color:#111;
+}
+.add-on .input-group-btn > .btn {
+    border-left-width:0;left:-2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* stop the glowing blue shadow */
+.add-on .form-control:focus {
+    box-shadow:none;
+    -webkit-box-shadow:none; 
+    border-color:#cccccc; 
+}
+#tv-srch-term{
+    background: transparent none repeat scroll 0% 0%;
+    color: rgb(255, 255, 255);
+    border-color: #fff;
+}
+.tv-search-btn .input-group-btn .btn {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+.tv-search-btn .form-control::-moz-placeholder {
+    color: #fff;
+    opacity: 1;
+}
+.tv-search-btn .form-control::-webkit-input-placeholder{
+    color: #fff;
+    opacity: 1;
+}
+.tv-recent-comment ul li a{
+    color: #fff;
+    line-height: 22px;
+}
+.tv-recent-tag ul li {
+    border-radius: 5px;
+    margin: 0 3px 5px 0;
+    padding: 8px;
+    text-transform: capitalize;
+    display: inline-block;
+    background: #111;
+}
+.tv-recent-tag ul li a {
+    color: #fff;
+    font-size: 12px;
+}
+
+/*
+Template Name: purrkatty
+File Name: responsive.css
+Author Name: ThemeVault
+Author URI: http://www.themevault.net/
+License URI: http://www.themevault.net/license/
+*/
+@media (max-width: 1199px){
+    .tv-tagline, .tv-comment-list {
+        margin-top: 30px;
+    }
+    .tv-tagline h2, .tv-tagline h1 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+}
+@media (max-width: 991px){
+    .tv-social-icon-list a {
+        font-size: 14px;
+        height: 35px;
+        line-height: 35px;
+        width: 35px;
+    }
+    .tv-social-icon {
+        padding: 20px 20px;
+        width: 350px;
+    }
+    .tv-logo-title {
+        width: 350px;
+        padding: 10px 60px 20px;
+    }
+    .tv-logo-img > img {
+        width: 18%;
+    }
+    .tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+        font-size: 38px;
+    }
+    .tv-tagline h2, .tv-tagline h1 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+    .tv-tagline, .tv-comment-list {
+        margin-top: 20px;
+    }
+    .tv-navbar-default .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 20px 35px;
+    }
+    .carousel.vertical .carousel-control.up{
+        top: 45%;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 53%;
+    }
+    .tv-welcome-box > h2 {
+        font-size: 36px;
+    }
+    .tv-welcome-box > p {
+        font-size: 14px;
+    }
+    .tv-welcome-banner {
+        min-height: 320px;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        font-size: 38px;
+        text-transform: uppercase;
+        color: #111;
+        margin-bottom: 60px;
+    }
+    .tv-block-heading > h2::before, .tv-block-heading > h1::before, .tv-block-heading > h2::after, .tv-block-heading > h1::after {
+        width: 3rem;
+    }
+    .tv-paddingTop-80 {
+        padding-top: 60px;
+    }
+    .tv-heading-img img {
+        left: -65px;
+        top: 9px;
+        width: 6%;
+    }
+    .tv-about-details, .tv-service-details, .tv-footer-logo{
+        text-align: center;
+    }
+    .tv-feature-box {
+        padding: 70px 0;
+        color: #fff;
+    }
+    .tv-feature-details > p {
+        font-size: 14px;
+    }
+    .tv-feature-box img {
+        height: 80px;
+        padding: 22px;
+        width: 80px;
+    }
+    .tv-service-list li:last-child {
+        margin-top: 30px;
+    }
+    .tv-service-details span {
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+        font-size: 16px;
+    }
+    .tv-service-details > h3 {
+        font-size: 24px;
+    }
+    .tv-service-details > p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .tv-hovereffect a {
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+    }
+    .tv-price-box h3 {
+        font-size: 23px;
+        margin: 20px 0 35px;
+    }
+    .tv-price-box h2 {
+        font-size: 30px;
+    }
+    .tv-blog-details h3 {
+        font-size: 20px;
+        line-height: 22px;
+        margin: 15px 0;
+    }
+    .tv-shop-box{
+        margin-bottom: 20px;
+    }
+    .tv-shop-detail span {
+        font-size: 28px;
+    }
+    .tv-shop-detail h3 {
+        font-size: 20px;
+    }
+    .tv-shop-detail span {
+        font-size: 28px;
+        margin: 10px 0 0px;
+    }
+    .tv-footer-logo .tv-logo-img > img {
+        width: 8%;
+        left: -87px;
+    }
+    .tv-social-link-box {
+        padding: 0px 0 26px;
+    }
+    .tv-inner-banner {
+        min-height: 350px;
+    }
+    .navbar {
+        margin-top: -60px;
+    }
+    .tv-single-blog-title h2, .tv-single-blog-title h1 {
+        font-size: 28px;
+    }
+    .tv-blog-post-date li {
+        font-size: 12px;
+    }
+    .tv-single-blog-para p {
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .tv-comments-list-box h2 {
+        font-size: 26px;
+    }
+    .tv-post-categories h3, .tv-post-search h3, .tv-post-recent-posts h3, .tv-post-recent-Tag h3 {
+        font-size: 22px;
+        margin-top: 30px;
+    }
+    .tv-categories-list ul li a, .tv-recent-post ul li a {
+        font-size: 12px;
+        line-height: 26px;
+    }
+    .tv-recent-tag ul li a {
+        font-size: 11px;
+    }
+    .tv-contact-details h3, .tv-contact-address-details h3 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .tv-contact-address-list li {
+        line-height: 32px;
+    }
+    .tv-contact-address-list a, .tv-contact-address-list p {
+        font-size: 15px;
+    }
+    .tv-site-btn{
+        font-size: 14px;
+    }
+    .tv-social-links a {
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+    }
+    .tv-contact-link a, .tv-contact-link p {
+        font-size: 15px;
+    }
+}
+@media (max-width: 767px){
+    .tv-social-icon-list a {
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+    }
+    .tv-social-icon {
+        padding: 10px 20px;
+    }
+    .navbar-toggler {
+        border: 1px solid #D94C28 !important;
+    }
+    .tv-navbar-default .navbar-toggler .icon-bar {
+        background-color: #111;
+    }
+    .tv-navbar-default .navbar-toggler:focus, .tv-navbar-default .navbar-toggler:hover {
+        background-color: #D94C28;
+    }
+    .tv-navbar-default .navbar-collapse, .tv-navbar-default .navbar-form{
+        border: none;
+        box-shadow: none;
+    }
+    .tv-navbar-default .navbar-nav .nav-link, .tv-welcome-box{
+        text-align: center;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 54%;
+    }
+    .carousel.vertical .carousel-control.up {
+        top: 44%;
+    }
+    .tv-feature-details{
+        margin-bottom: 20px;
+    }
+    .tv-about-details > p {
+        font-size: 14px;
+        line-height: 25px;
+        margin-bottom: 20px;
+    }
+    .tv-block-heading > h2::before, .tv-block-heading > h1::before, .tv-block-heading > h2::after, .tv-block-heading > h1::after {
+        margin: -0.5rem 1rem;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        font-size: 34px;
+        margin-bottom: 50px;
+    }
+    .tv-paddingTop-80 {
+        padding-top: 50px;
+    }
+    .tv-about-details span {
+        font-size: 20px;
+    }
+    .tv-feature-details h3 {
+        margin: 10px 0 5px;
+    }
+    .tv-feature-box {
+        padding: 40px 0;
+    }
+    .tv-service-img img {
+        width: 40%;
+    }
+    .tv-service-details > h3 {
+        font-size: 20px;
+    }
+    #myCarousel {
+        padding: 50px 0;
+    }
+    .tv-testimonial-banner {
+        min-height: 400px;
+    }
+    .tv-client-details p {
+        font-size: 14px;
+    }
+    .tv-blog-img img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .tv-inner-banner {
+        min-height: 280px;
+    }
+    .tv-rightside-content {
+        margin-top: 40px;
+    }
+    .tv-contact-address-details {
+        padding-left: 0px;
+        margin-top: 40px;
+    }
+}
+@media (max-width: 500px){
+    .tv-social-icon {
+        padding: 10px 20px;
+        width: 280px;
+    }
+    .tv-logo-title {
+        width: 280px;
+        padding: 0px 40px 10px;
+    }
+    .tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+        font-size: 32px;
+    }
+    .tv-logo-img > img {
+        width: 16%;
+    }
+    .tv-tagline, .tv-comment-list {
+        margin-top: 15px;
+    }
+    .tv-tagline h2, .tv-tagline h1 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .carousel.vertical .carousel-control.up {
+        top: 42%;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 56%;
+    }
+    .tv-welcome-box > h2 {
+        font-size: 30px;
+    }
+    .tv-welcome-banner {
+        min-height: 280px;
+    }
+    .tv-welcome-box {
+        padding: 30px 0;
+    }
+    .tv-inner-banner {
+        min-height: 250px;
+    }
+}
+@media (max-width: 400px){
+    .width-100{
+        width:100%;
+    }
+    .tv-social-icon-list {
+        text-align: center;
+    }
+    .tv-social-icon {
+        width: 200px;
+    }
+    .tv-logo-img > img {
+        top: 7px;
+        width: 14%;
+    }
+    .tv-logo-title {
+        width: 200px;
+        padding: 0px 20px 10px;
+    }
+    .tv-logo-title p{
+        font-size: 12px;
+    }
+    .tv-logo-title h1, .tv-footer-logo h1, .tv-logo-title .tv-site-name, .tv-footer-logo .tv-footer-site-name {
+        font-size: 26px;
+    }
+    .tv-tagline{
+        display: none;
+    }
+    .carousel.vertical .carousel-control.down {
+        top: 45%;
+    }
+    .carousel.vertical .carousel-control.up {
+        top: 26%;
+    }
+    #carousel-example-vertical .carousel-caption {
+        left: 6%;
+    }
+    .tv-navbar-default .navbar-nav .nav-link {
+        padding: 15px 35px;
+    }
+    .tv-welcome-box > h2 {
+        font-size: 24px;
+    }
+    .tv-welcome-box > p {
+        font-size: 13px;
+        margin: 5px 0 15px;
+    }
+    .tv-site-btn {
+        font-size: 13px;
+        padding: 10px 22px;
+    }
+    .tv-welcome-banner {
+        min-height: 245px;
+    }
+    .tv-heading-img img {
+        left: -52px;
+        top: 6px;
+        width: 8%;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        font-size: 26px;
+    }
+    .tv-block-heading > h2::before, .tv-block-heading > h1::before, .tv-block-heading > h2::after, .tv-block-heading > h1::after {
+        width: 2rem;
+        margin: -0.7rem 1rem;
+    }
+    .tv-block-heading > h2, .tv-block-heading > h1 {
+        margin-bottom: 40px;
+    }
+    .tv-paddingTop-80 {
+        padding-top: 40px;
+    }
+    .tv-about-details span {
+        font-size: 18px;
+    }
+    .tv-feature-details h3 {
+        font-size: 20px;
+    }
+    .tv-feature-banner {
+        background: rgba(0, 0, 0, 0) url("../images/features.jpg") no-repeat scroll 62% top / cover;
+    }
+    .tv-service-img img {
+        width: 50%;
+    }
+    .tv-client-details p {
+        font-size: 12px;
+    }
+    .tv-client-details h3 {
+        margin: 8px 0;
+        font-size: 20px;
+    }
+    .tv-shop-detail span {
+        font-size: 25px;
+        margin: 5px 0 0px;
+    }
+    .tv-footer-logo .tv-logo-img > img {
+        width: 11%;
+        left: -63px;
+    }
+    .tv-contact-link a, .tv-contact-link p {
+        font-size: 13px;
+    }
+    .tv-social-link-box h3 {
+        font-size: 22px;
+    }
+    .tv-social-links a {
+        font-size: 12px;
+        height: 35px;
+        line-height: 37px;
+        width: 35px;
+    }
+    .tv-copyright-box a {
+        font-size: 14px;
+    }
+    .tv-copyright-box > p {
+        font-size: 12px;
+    }
+    .tv-inner-banner {
+        min-height: 220px;
+    }
+    .tv-single-blog-details {
+        text-align: center;
+    }
+    .tv-single-blog-title h2, .tv-single-blog-title h1 {
+    font-size: 24px;
+}
+.tv-single-blog-para blockquote{
+    text-align: left;
+}
+}
+
+/* ==========================================================================
+   PurrKatty — template-specific Bootstrap 5 shims.
+
+   The SHARED Bootstrap 3 -> 5 compatibility layer lives in
+   web/scripts/upgrade-qa/bs3-compat.css and is linked BEFORE style.css.
+   Only rules peculiar to THIS template belong here.
+   ========================================================================== */
+
+/* --- The five menu colours -------------------------------------------------------
+   v1 set them inline on every page's five links. */
+.tv-nav-main { background: #8ba72e; }
+.tv-nav-about { background: #ba2257; }
+.tv-nav-gallery { background: #5a4ca6; }
+.tv-nav-blog { background: #d89327; }
+.tv-nav-contact { background: #d94c28; }
+
+/* --- The first slide's tagline was inline `color:#111` ------------------------------ */
+.tv-tagline .tv-tagline-dark { color: #111; }
+
+/* --- Back to top ---------------------------------------------------------------
+   v1 hid it with an inline `style="display:none"` and animated it with
+   jQuery's fadeIn. v2 toggles a class instead. It is a <button> now; v1's
+   own `.tv-back-to-top` rule keeps the look. */
+button.tv-back-to-top {
+    display: none;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease 0s;
+}
+button.tv-back-to-top.is-visible { display: block; opacity: 1; }
+
+/* --- The comment avatars were inline 100x100 ----------------------------------------- */
+.tv-avatar { width: 100px; height: 100px; object-fit: cover; }
+
+/* --- Lightbox (main.js builds it in place of lightbox.js) ---------------------- */
+.tv-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1090;
+    background: rgba(0, 0, 0, .9);
+    align-items: center;
+    justify-content: center;
+}
+.tv-lightbox.is-open { display: flex; }
+.tv-lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .5);
+}
+.tv-lightbox button {
+    position: absolute;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 40px;
+    line-height: 1;
+    padding: 10px 18px;
+    cursor: pointer;
+}
+.tv-lightbox button:hover,
+.tv-lightbox button:focus-visible { color: var(--tv-amber); }
+.tv-lb-close { top: 10px; right: 16px; font-size: 48px; }
+.tv-lb-prev { left: 10px; top: 50%; transform: translateY(-50%); }
+.tv-lb-next { right: 10px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 575.98px) {
+    .tv-lightbox button { font-size: 30px; }
+    .tv-lb-close { font-size: 36px; }
+}
+
+/* --- Forms ----------------------------------------------------------------------
+   A static template posts nowhere; main.js validates and shows the note. */
+.tv-form-note { display: block; margin: 12px 0 0; font-size: 14px; color: var(--tv-orange); }
+.tv-form-note:focus { outline: none; }
+.form-control.is-invalid, input.is-invalid, select.is-invalid, textarea.is-invalid { border-color: #d9534f !important; }
+/* the Send Message / Post Comment pills were <a>s; as <button>s the browser
+   chrome comes off — v1's .tv-site-btn rule is the look */
+button.tv-site-btn { border: 0; }
+
+/* --- The vertical banner carousel ---------------------------------------------------
+   v1 gave the slide `width: auto` — harmless on Bootstrap 3's block slide.
+   Bootstrap 5's slide is a float with `margin-right: -100%`, and `width:
+   auto` on a float is shrink-to-fit: the banner photo grew to twice the
+   viewport on a phone. The slide is the viewport's width, as it was. */
+.carousel.vertical .carousel-inner > .carousel-item { width: 100%; }
+
+/* --- The blog sidebar's search button ---------------------------------------------
+   Bootstrap 3's .btn-default (white, grey border); Bootstrap 5 has no such
+   class and the template does not style it. */
+.tv-search-btn .btn-default { color: #333; background-color: #fff; border: 1px solid #ccc; }
+.tv-search-btn .btn-default:hover { background-color: #e6e6e6; border-color: #adadad; }
+
+/* --- The five new pages (owner's picks 2026-09-15) ---------------------------------
+   Services, booking, shop, product, 404. Built from v1's own blocks; only
+   what those blocks do not cover is here. */
+.tv-lead-text { color: #363636; font-size: 16px; line-height: 28px; margin-bottom: 40px; text-align: center; }
+.tv-lead-text a { color: var(--tv-orange); text-decoration: underline; }
+/* services: a card per service, the round orange icon from v1's service list */
+.tv-services-grid > [class*="col-"] { margin-bottom: 30px; display: flex; }
+.tv-service-card { display: flex; gap: 25px; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 20px 2px rgba(0, 0, 0, .08); width: 100%; }
+.tv-service-icon { flex: 0 0 auto; background: var(--tv-orange); border-radius: 50%; color: #fff; display: inline-block; width: 60px; height: 60px; line-height: 60px; text-align: center; font-size: 24px; }
+.tv-service-body h3 { color: #363636; font-size: 26px; margin-bottom: 10px; }
+.tv-service-body p { color: #363636; font-size: 15px; line-height: 26px; margin-bottom: 10px; }
+.tv-service-meta { color: var(--tv-amber); font-size: 18px; font-family: var(--tv-font-head); }
+.tv-services-cta h3 { color: var(--tv-amber); font-size: 30px; margin-bottom: 10px; }
+.tv-services-cta p { color: #363636; font-size: 16px; line-height: 28px; max-width: 640px; margin: 0 auto 10px; }
+@media (max-width: 575.98px) { .tv-service-card { flex-direction: column; gap: 15px; } }
+/* booking */
+.tv-booking-form .form-group { margin-bottom: 20px; }
+.tv-booking-form .form-control { height: 45px; }
+.tv-booking-form textarea.form-control { height: 120px; }
+.tv-booking-form select.form-control { appearance: auto; }
+.tv-steps { padding-left: 0; list-style: none; counter-reset: step; margin-bottom: 40px; }
+.tv-steps li { position: relative; padding-left: 55px; margin-bottom: 20px; color: #363636; font-size: 15px; line-height: 26px; counter-increment: step; }
+.tv-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 40px; height: 40px; line-height: 40px; text-align: center; border-radius: 50%; background: var(--tv-orange); color: #fff; font-family: var(--tv-font-head); font-size: 18px; }
+.tv-booking-contact { text-align: left; }
+.tv-booking-contact li { margin-bottom: 12px; font-size: 16px; color: #363636; }
+.tv-booking-contact li a, .tv-booking-contact li p { color: #363636; }
+.tv-booking-contact i { color: var(--tv-orange); width: 24px; }
+@media (max-width: 767.98px) { .tv-booking-aside { margin-top: 60px; } }
+/* shop: one product per row on a phone (owner, 2026-09-15: "shop page needs
+   to show single product in mobile" — v1 went two-up between 400 and 767px),
+   the filter buttons and the tiles' links */
+.tv-shop-filter { text-align: center; margin-bottom: 40px; }
+.tv-shop-filter li { display: inline-block; margin: 0 4px 10px; }
+.tv-shop-filter .tv-site-btn { padding: 8px 22px; font-size: 14px; background: #fff; color: #363636; box-shadow: inset 0 0 0 2px #ddd; }
+.tv-shop-filter .tv-site-btn.active, .tv-shop-filter .tv-site-btn:hover { background: var(--tv-orange); color: #fff; box-shadow: 9px 0 0 0 var(--tv-amber) inset; }
+.tv-shop-grid > [class*="col-"] { margin-bottom: 30px; }
+.tv-shop-grid > .is-filtered-out { display: none; }
+.tv-shop-detail h3 a { color: inherit; }
+.tv-shop-detail h3 a:hover { color: var(--tv-orange); }
+/* product */
+.tv-product-cat a { color: var(--tv-amber); font-family: var(--tv-font-head); font-size: 16px; text-transform: uppercase; letter-spacing: 2px; }
+.tv-product-price { font-family: var(--tv-font-head); font-size: 40px; color: var(--tv-orange); margin: 5px 0 15px; }
+.tv-product-price small { font-size: 16px; color: #363636; font-family: var(--tv-font-body); }
+.tv-product-summary > p { color: #363636; font-size: 16px; line-height: 28px; margin-bottom: 20px; }
+.tv-product-facts { margin: 0 0 25px; padding: 0; }
+.tv-product-facts li { color: #363636; font-size: 15px; line-height: 26px; padding-left: 20px; position: relative; }
+.tv-product-facts li::before { content: ""; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--tv-amber); }
+.tv-order-form { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 15px; margin-bottom: 15px; }
+.tv-order-form .form-label { margin: 0; font-size: 16px; }
+.tv-order-form .form-control { width: 80px; height: 45px; }
+.tv-order-form .tv-site-btn { margin-top: 0; }
+.tv-order-form .tv-form-note { flex-basis: 100%; }
+.tv-product-note { color: #363636; font-size: 14px; }
+.tv-product-note i { color: var(--tv-orange); margin-right: 6px; }
+.tv-related-title { color: var(--tv-amber); font-size: 30px; margin-bottom: 30px; text-align: center; }
+@media (max-width: 767.98px) { .tv-product-summary { margin-top: 40px; } }
+/* 404 */
+.tv-404 { padding-bottom: 20px; }
+.tv-404-code { font-family: var(--tv-font-head); font-size: 8rem; line-height: 1; color: var(--tv-orange); margin-bottom: 20px; }
+.tv-404-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+@media (max-width: 575.98px) { .tv-404-code { font-size: 5rem; } }
+
+/* --- The testimonial slider on a phone -----------------------------------------------
+   v1 (and the first port) boxed the quote in a fixed 300px `.carousel-inner`
+   with the caption positioned inside it; below 768 the photo, name and
+   quote run taller than the box and the last lines were cut off (owner,
+   2026-09-15: "in mobile testimonial is not visible fully"). The caption
+   sits in normal flow on a phone and the box grows with it; the quote's
+   70% column widens to 90% for the narrow screen. */
+@media (max-width: 767.98px) {
+    #myCarousel .carousel-inner { height: auto; min-height: 300px; }
+    #myCarousel .carousel-item { min-height: 300px; }
+    #myCarousel .carousel-caption { position: relative; top: auto; transform: none; width: 84%; padding: 30px 0; }
+    .tv-client-details p { width: 90%; }
+}
+
+/* --- The home banner slider on a phone ----------------------------------------------
+   v1 let the slide be the photo's natural height — 208px at 375px wide,
+   with the tagline hidden below 400px — so the header was a thin strip
+   (owner, 2026-09-15: "header slider height in mobile is small"). Below
+   768 the photo fills a 400px band (cropped to cover, centred on the cat)
+   and the caption sits inside it; the tagline stays as v1 had it. */
+@media (max-width: 767.98px) {
+    #carousel-example-vertical .tv-banner-image { height: 400px; }
+    #carousel-example-vertical .tv-banner-image img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }
+    #carousel-example-vertical .carousel-caption { top: 20px; }
+}
