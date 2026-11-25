@@ -47,8 +47,7 @@ html {
     html { scroll-behavior: auto; }
     * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
-/* v1's body took Bootstrap 3's 14px / 1.42857 base; its own rule sets the
-   family, colour and letter-spacing only. Bootstrap 5's root stays 16px. */
+/* Bootstrap 5's root stays 16px. */
 body {
     font-family: var(--tv-font-body);
     font-size: 14px;
@@ -60,21 +59,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 img { max-width: 100%; height: auto; }
 
-/* ==========================================================================
-   4. Components - ported from v1's style.css, with the Bootstrap 3 selectors
-   rewritten for Bootstrap 5. See _port-css.mjs for the exact mapping.
-
-   ORDER MATTERS, and it is taken from the <link> tags rather than chosen here.
-   Where two of a template's stylesheets set the same property at the same
-   specificity, the later one wins — so reordering them silently changes the
-   design. AquaLand loaded scrolling-nav.css before style.css; appending it
-   after instead turned ".navbar{padding:10px}" into "padding:20px 0" and added
-   20px to the menu bar at every desktop width.
-
-   The responsive stylesheet is simply the last link: v1's queries are
-   max-width based and land on breakpoints Bootstrap 5 shares, so they carry
-   across unchanged.
-   ========================================================================== */
+/* ========================================================================== 4. See _port-css.mjs for the exact mapping. ORDER MATTERS, and it is taken from the <link> tags rather than chosen here. Where two of a template's stylesheets set the same property at the same specificity, the later one wins — so reordering them silently changes the design. */
 /*
 Template Name: purrkatty
 File Name: style.css
@@ -1494,13 +1479,7 @@ License URI: http://www.themevault.net/license/
 }
 }
 
-/* ==========================================================================
-   PurrKatty — template-specific Bootstrap 5 shims.
-
-   The SHARED Bootstrap 3 -> 5 compatibility layer lives in
-   web/scripts/upgrade-qa/bs3-compat.css and is linked BEFORE style.css.
-   Only rules peculiar to THIS template belong here.
-   ========================================================================== */
+/* ========================================================================== PurrKatty — template-specific Bootstrap 5 shims. Only rules peculiar to THIS template belong here. ========================================================================== */
 
 /* --- The five menu colours -------------------------------------------------------
    v1 set them inline on every page's five links. */
@@ -1513,10 +1492,7 @@ License URI: http://www.themevault.net/license/
 /* --- The first slide's tagline was inline `color:#111` ------------------------------ */
 .tv-tagline .tv-tagline-dark { color: #111; }
 
-/* --- Back to top ---------------------------------------------------------------
-   v1 hid it with an inline `style="display:none"` and animated it with
-   jQuery's fadeIn. v2 toggles a class instead. It is a <button> now; v1's
-   own `.tv-back-to-top` rule keeps the look. */
+/* Back to top --------------------------------------------------------------- v1 hid it with an inline `style="display:none"` and animated it with jQuery's fadeIn. v2 toggles a class instead. */
 button.tv-back-to-top {
     display: none;
     padding: 0;
@@ -1572,8 +1548,6 @@ button.tv-back-to-top.is-visible { display: block; opacity: 1; }
 .tv-form-note { display: block; margin: 12px 0 0; font-size: 14px; color: var(--tv-orange); }
 .tv-form-note:focus { outline: none; }
 .form-control.is-invalid, input.is-invalid, select.is-invalid, textarea.is-invalid { border-color: #d9534f !important; }
-/* the Send Message / Post Comment pills were <a>s; as <button>s the browser
-   chrome comes off — v1's .tv-site-btn rule is the look */
 button.tv-site-btn { border: 0; }
 
 /* --- The vertical banner carousel ---------------------------------------------------
@@ -1589,12 +1563,9 @@ button.tv-site-btn { border: 0; }
 .tv-search-btn .btn-default { color: #333; background-color: #fff; border: 1px solid #ccc; }
 .tv-search-btn .btn-default:hover { background-color: #e6e6e6; border-color: #adadad; }
 
-/* --- The five new pages (owner's picks 2026-09-15) ---------------------------------
-   Services, booking, shop, product, 404. Built from v1's own blocks; only
-   what those blocks do not cover is here. */
+/* The five new pages --------------------------------- Services, booking, shop, product, 404. */
 .tv-lead-text { color: #363636; font-size: 16px; line-height: 28px; margin-bottom: 40px; text-align: center; }
 .tv-lead-text a { color: var(--tv-orange); text-decoration: underline; }
-/* services: a card per service, the round orange icon from v1's service list */
 .tv-services-grid > [class*="col-"] { margin-bottom: 30px; display: flex; }
 .tv-service-card { display: flex; gap: 25px; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 20px 2px rgba(0, 0, 0, .08); width: 100%; }
 .tv-service-icon { flex: 0 0 auto; background: var(--tv-orange); border-radius: 50%; color: #fff; display: inline-block; width: 60px; height: 60px; line-height: 60px; text-align: center; font-size: 24px; }
@@ -1648,21 +1619,7 @@ button.tv-site-btn { border: 0; }
 .tv-404-code { font-family: var(--tv-font-head); font-size: 8rem; line-height: 1; color: var(--tv-orange); margin-bottom: 20px; }
 .tv-404-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 @media (max-width: 575.98px) { .tv-404-code { font-size: 5rem; } }
-/* ==========================================================================
-   4. Components - ported from v1's style.css, with the Bootstrap 3 selectors
-   rewritten for Bootstrap 5. See _port-css.mjs for the exact mapping.
-
-   ORDER MATTERS, and it is taken from the <link> tags rather than chosen here.
-   Where two of a template's stylesheets set the same property at the same
-   specificity, the later one wins — so reordering them silently changes the
-   design. AquaLand loaded scrolling-nav.css before style.css; appending it
-   after instead turned ".navbar{padding:10px}" into "padding:20px 0" and added
-   20px to the menu bar at every desktop width.
-
-   The responsive stylesheet is simply the last link: v1's queries are
-   max-width based and land on breakpoints Bootstrap 5 shares, so they carry
-   across unchanged.
-   ========================================================================== */
+/* ========================================================================== 4. See _port-css.mjs for the exact mapping. ORDER MATTERS, and it is taken from the <link> tags rather than chosen here. Where two of a template's stylesheets set the same property at the same specificity, the later one wins — so reordering them silently changes the design. */
 /*
 Template Name: purrkatty
 File Name: style.css
@@ -3082,13 +3039,7 @@ License URI: http://www.themevault.net/license/
 }
 }
 
-/* ==========================================================================
-   PurrKatty — template-specific Bootstrap 5 shims.
-
-   The SHARED Bootstrap 3 -> 5 compatibility layer lives in
-   web/scripts/upgrade-qa/bs3-compat.css and is linked BEFORE style.css.
-   Only rules peculiar to THIS template belong here.
-   ========================================================================== */
+/* ========================================================================== PurrKatty — template-specific Bootstrap 5 shims. Only rules peculiar to THIS template belong here. ========================================================================== */
 
 /* --- The five menu colours -------------------------------------------------------
    v1 set them inline on every page's five links. */
@@ -3101,10 +3052,7 @@ License URI: http://www.themevault.net/license/
 /* --- The first slide's tagline was inline `color:#111` ------------------------------ */
 .tv-tagline .tv-tagline-dark { color: #111; }
 
-/* --- Back to top ---------------------------------------------------------------
-   v1 hid it with an inline `style="display:none"` and animated it with
-   jQuery's fadeIn. v2 toggles a class instead. It is a <button> now; v1's
-   own `.tv-back-to-top` rule keeps the look. */
+/* Back to top --------------------------------------------------------------- v1 hid it with an inline `style="display:none"` and animated it with jQuery's fadeIn. v2 toggles a class instead. */
 button.tv-back-to-top {
     display: none;
     padding: 0;
@@ -3160,8 +3108,6 @@ button.tv-back-to-top.is-visible { display: block; opacity: 1; }
 .tv-form-note { display: block; margin: 12px 0 0; font-size: 14px; color: var(--tv-orange); }
 .tv-form-note:focus { outline: none; }
 .form-control.is-invalid, input.is-invalid, select.is-invalid, textarea.is-invalid { border-color: #d9534f !important; }
-/* the Send Message / Post Comment pills were <a>s; as <button>s the browser
-   chrome comes off — v1's .tv-site-btn rule is the look */
 button.tv-site-btn { border: 0; }
 
 /* --- The vertical banner carousel ---------------------------------------------------
@@ -3177,12 +3123,9 @@ button.tv-site-btn { border: 0; }
 .tv-search-btn .btn-default { color: #333; background-color: #fff; border: 1px solid #ccc; }
 .tv-search-btn .btn-default:hover { background-color: #e6e6e6; border-color: #adadad; }
 
-/* --- The five new pages (owner's picks 2026-09-15) ---------------------------------
-   Services, booking, shop, product, 404. Built from v1's own blocks; only
-   what those blocks do not cover is here. */
+/* The five new pages --------------------------------- Services, booking, shop, product, 404. */
 .tv-lead-text { color: #363636; font-size: 16px; line-height: 28px; margin-bottom: 40px; text-align: center; }
 .tv-lead-text a { color: var(--tv-orange); text-decoration: underline; }
-/* services: a card per service, the round orange icon from v1's service list */
 .tv-services-grid > [class*="col-"] { margin-bottom: 30px; display: flex; }
 .tv-service-card { display: flex; gap: 25px; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 20px 2px rgba(0, 0, 0, .08); width: 100%; }
 .tv-service-icon { flex: 0 0 auto; background: var(--tv-orange); border-radius: 50%; color: #fff; display: inline-block; width: 60px; height: 60px; line-height: 60px; text-align: center; font-size: 24px; }
@@ -3205,9 +3148,7 @@ button.tv-site-btn { border: 0; }
 .tv-booking-contact li a, .tv-booking-contact li p { color: #363636; }
 .tv-booking-contact i { color: var(--tv-orange); width: 24px; }
 @media (max-width: 767.98px) { .tv-booking-aside { margin-top: 60px; } }
-/* shop: one product per row on a phone (owner, 2026-09-15: "shop page needs
-   to show single product in mobile" — v1 went two-up between 400 and 767px),
-   the filter buttons and the tiles' links */
+/* shop: one product per row on a phone, the filter buttons and the tiles' links */
 .tv-shop-filter { text-align: center; margin-bottom: 40px; }
 .tv-shop-filter li { display: inline-block; margin: 0 4px 10px; }
 .tv-shop-filter .tv-site-btn { padding: 8px 22px; font-size: 14px; background: #fff; color: #363636; box-shadow: inset 0 0 0 2px #ddd; }
@@ -3239,34 +3180,14 @@ button.tv-site-btn { border: 0; }
 .tv-404-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 @media (max-width: 575.98px) { .tv-404-code { font-size: 5rem; } }
 
-/* --- The testimonial slider on a phone -----------------------------------------------
-   v1 (and the first port) boxed the quote in a fixed 300px `.carousel-inner`
-   with the caption positioned inside it; below 768 the photo, name and
-   quote run taller than the box and the last lines were cut off (owner,
-   2026-09-15: "in mobile testimonial is not visible fully"). The caption
-   sits in normal flow on a phone and the box grows with it; the quote's
-   70% column widens to 90% for the narrow screen. */
+/* The testimonial slider on a phone ----------------------------------------------- v1 (and the first port) boxed the quote in a fixed 300px `.carousel-inner` with the caption positioned inside it; below 768 the photo, name and quote run taller than the box and the last lines were cut off. The caption sits in normal flow on a phone and the box grows with it; the quote's 70% column widens to 90% for the narrow screen. */
 @media (max-width: 767.98px) {
     #myCarousel .carousel-inner { height: auto; min-height: 300px; }
     #myCarousel .carousel-item { min-height: 300px; }
     #myCarousel .carousel-caption { position: relative; top: auto; transform: none; width: 84%; padding: 30px 0; }
     .tv-client-details p { width: 90%; }
 }
-/* ==========================================================================
-   4. Components - ported from v1's style.css, with the Bootstrap 3 selectors
-   rewritten for Bootstrap 5. See _port-css.mjs for the exact mapping.
-
-   ORDER MATTERS, and it is taken from the <link> tags rather than chosen here.
-   Where two of a template's stylesheets set the same property at the same
-   specificity, the later one wins — so reordering them silently changes the
-   design. AquaLand loaded scrolling-nav.css before style.css; appending it
-   after instead turned ".navbar{padding:10px}" into "padding:20px 0" and added
-   20px to the menu bar at every desktop width.
-
-   The responsive stylesheet is simply the last link: v1's queries are
-   max-width based and land on breakpoints Bootstrap 5 shares, so they carry
-   across unchanged.
-   ========================================================================== */
+/* ========================================================================== 4. See _port-css.mjs for the exact mapping. ORDER MATTERS, and it is taken from the <link> tags rather than chosen here. Where two of a template's stylesheets set the same property at the same specificity, the later one wins — so reordering them silently changes the design. */
 /*
 Template Name: purrkatty
 File Name: style.css
@@ -4686,13 +4607,7 @@ License URI: http://www.themevault.net/license/
 }
 }
 
-/* ==========================================================================
-   PurrKatty — template-specific Bootstrap 5 shims.
-
-   The SHARED Bootstrap 3 -> 5 compatibility layer lives in
-   web/scripts/upgrade-qa/bs3-compat.css and is linked BEFORE style.css.
-   Only rules peculiar to THIS template belong here.
-   ========================================================================== */
+/* ========================================================================== PurrKatty — template-specific Bootstrap 5 shims. Only rules peculiar to THIS template belong here. ========================================================================== */
 
 /* --- The five menu colours -------------------------------------------------------
    v1 set them inline on every page's five links. */
@@ -4705,10 +4620,7 @@ License URI: http://www.themevault.net/license/
 /* --- The first slide's tagline was inline `color:#111` ------------------------------ */
 .tv-tagline .tv-tagline-dark { color: #111; }
 
-/* --- Back to top ---------------------------------------------------------------
-   v1 hid it with an inline `style="display:none"` and animated it with
-   jQuery's fadeIn. v2 toggles a class instead. It is a <button> now; v1's
-   own `.tv-back-to-top` rule keeps the look. */
+/* Back to top --------------------------------------------------------------- v1 hid it with an inline `style="display:none"` and animated it with jQuery's fadeIn. v2 toggles a class instead. */
 button.tv-back-to-top {
     display: none;
     padding: 0;
@@ -4764,8 +4676,6 @@ button.tv-back-to-top.is-visible { display: block; opacity: 1; }
 .tv-form-note { display: block; margin: 12px 0 0; font-size: 14px; color: var(--tv-orange); }
 .tv-form-note:focus { outline: none; }
 .form-control.is-invalid, input.is-invalid, select.is-invalid, textarea.is-invalid { border-color: #d9534f !important; }
-/* the Send Message / Post Comment pills were <a>s; as <button>s the browser
-   chrome comes off — v1's .tv-site-btn rule is the look */
 button.tv-site-btn { border: 0; }
 
 /* --- The vertical banner carousel ---------------------------------------------------
@@ -4781,12 +4691,9 @@ button.tv-site-btn { border: 0; }
 .tv-search-btn .btn-default { color: #333; background-color: #fff; border: 1px solid #ccc; }
 .tv-search-btn .btn-default:hover { background-color: #e6e6e6; border-color: #adadad; }
 
-/* --- The five new pages (owner's picks 2026-09-15) ---------------------------------
-   Services, booking, shop, product, 404. Built from v1's own blocks; only
-   what those blocks do not cover is here. */
+/* The five new pages --------------------------------- Services, booking, shop, product, 404. */
 .tv-lead-text { color: #363636; font-size: 16px; line-height: 28px; margin-bottom: 40px; text-align: center; }
 .tv-lead-text a { color: var(--tv-orange); text-decoration: underline; }
-/* services: a card per service, the round orange icon from v1's service list */
 .tv-services-grid > [class*="col-"] { margin-bottom: 30px; display: flex; }
 .tv-service-card { display: flex; gap: 25px; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 20px 2px rgba(0, 0, 0, .08); width: 100%; }
 .tv-service-icon { flex: 0 0 auto; background: var(--tv-orange); border-radius: 50%; color: #fff; display: inline-block; width: 60px; height: 60px; line-height: 60px; text-align: center; font-size: 24px; }
@@ -4809,9 +4716,7 @@ button.tv-site-btn { border: 0; }
 .tv-booking-contact li a, .tv-booking-contact li p { color: #363636; }
 .tv-booking-contact i { color: var(--tv-orange); width: 24px; }
 @media (max-width: 767.98px) { .tv-booking-aside { margin-top: 60px; } }
-/* shop: one product per row on a phone (owner, 2026-09-15: "shop page needs
-   to show single product in mobile" — v1 went two-up between 400 and 767px),
-   the filter buttons and the tiles' links */
+/* shop: one product per row on a phone, the filter buttons and the tiles' links */
 .tv-shop-filter { text-align: center; margin-bottom: 40px; }
 .tv-shop-filter li { display: inline-block; margin: 0 4px 10px; }
 .tv-shop-filter .tv-site-btn { padding: 8px 22px; font-size: 14px; background: #fff; color: #363636; box-shadow: inset 0 0 0 2px #ddd; }
@@ -4843,13 +4748,7 @@ button.tv-site-btn { border: 0; }
 .tv-404-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 @media (max-width: 575.98px) { .tv-404-code { font-size: 5rem; } }
 
-/* --- The testimonial slider on a phone -----------------------------------------------
-   v1 (and the first port) boxed the quote in a fixed 300px `.carousel-inner`
-   with the caption positioned inside it; below 768 the photo, name and
-   quote run taller than the box and the last lines were cut off (owner,
-   2026-09-15: "in mobile testimonial is not visible fully"). The caption
-   sits in normal flow on a phone and the box grows with it; the quote's
-   70% column widens to 90% for the narrow screen. */
+/* The testimonial slider on a phone ----------------------------------------------- v1 (and the first port) boxed the quote in a fixed 300px `.carousel-inner` with the caption positioned inside it; below 768 the photo, name and quote run taller than the box and the last lines were cut off. The caption sits in normal flow on a phone and the box grows with it; the quote's 70% column widens to 90% for the narrow screen. */
 @media (max-width: 767.98px) {
     #myCarousel .carousel-inner { height: auto; min-height: 300px; }
     #myCarousel .carousel-item { min-height: 300px; }
@@ -4857,12 +4756,7 @@ button.tv-site-btn { border: 0; }
     .tv-client-details p { width: 90%; }
 }
 
-/* --- The home banner slider on a phone ----------------------------------------------
-   v1 let the slide be the photo's natural height — 208px at 375px wide,
-   with the tagline hidden below 400px — so the header was a thin strip
-   (owner, 2026-09-15: "header slider height in mobile is small"). Below
-   768 the photo fills a 400px band (cropped to cover, centred on the cat)
-   and the caption sits inside it; the tagline stays as v1 had it. */
+/* The home banner slider on a phone ---------------------------------------------- v1 let the slide be the photo's natural height — 208px at 375px wide, with the tagline hidden below 400px — so the header was a thin strip. Below 768 the photo fills a 400px band (cropped to cover, centred on the cat) and the caption sits inside it; the tagline stays as v1 had it. */
 @media (max-width: 767.98px) {
     #carousel-example-vertical .tv-banner-image { height: 400px; }
     #carousel-example-vertical .tv-banner-image img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }

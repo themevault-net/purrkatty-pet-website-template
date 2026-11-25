@@ -1,19 +1,4 @@
-/*!
- * Bootstrap 3 -> 5 compatibility layer — PurrKatty v2.0
- *
- * Loaded BETWEEN bootstrap.min.css and style.css.
- *
- * Bootstrap 5 dropped or renamed a number of things Bootstrap 3 provided, and
- * changed the value of others: heading sizes, form control heights, container
- * widths, .caret, .navbar-header, .input-group-btn, .radio/.checkbox. This file
- * restores Bootstrap 3's behaviour for the ones this design relies on, so the
- * template looks the way it was drawn while running on current Bootstrap.
- *
- * Every rule here is deliberately low-specificity and loads before style.css,
- * so anything you write in style.css wins. If you do not need a component,
- * deleting its rules from this file is safe.
- */
-
+/* Bootstrap 3 compatibility rules: keep the template's original layout classes working on Bootstrap 5. */
 .navbar-nav .nav-link { --bs-nav-link-padding-y: 10px; }
 @media (min-width: 768px) {
     .navbar-nav .nav-link { --bs-nav-link-padding-y: 15px; }
